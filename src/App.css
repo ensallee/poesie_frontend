@@ -1,0 +1,101 @@
+.App {
+  text-align: center;
+}
+
+/*for first page */
+.hero {
+    /* Sizing */
+    width: 100vw;
+    height: 100vh;
+    /* Flexbox stuff */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Text styles */
+    text-align: center;
+
+    /* Background styles */
+    background-image: url(./images/anastasia-dulgier-675630-unsplash.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/*for first page */
+.hero-inner {
+  width: 50%;
+  background: white;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+}
+
+/*for first page */
+.hero h1 {
+    /* Text styles */
+    font-size: 6em;
+    font-family:'Cedarville Cursive', cursive;
+    /* Margins */
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+/*for first page */
+  .hero .btn {
+    /* Positioning and sizing */
+    display: block;
+    width: 200px;
+
+    /* Padding and margins */
+    padding: 1em;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Text styles */
+    color: black;
+    text-decoration: none;
+    font-size: 1.5em;
+
+
+    /* Border styles */
+    border: 3px solid black;
+    border-radius: 20px;
+}
+
+/*for first page */
+  .hero .btn:hover {
+    /* Positioning and sizing */
+    display: block;
+    width: 200px;
+
+    /* Padding and margins */
+    padding: 1em;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Text styles */
+    color: rgb(160, 7, 72);
+    text-decoration: none;
+    font-size: 1.5em;
+
+
+    /* Border styles */
+    border: 3px solid rgb(160, 7, 72);
+    border-radius: 20px;
+}
+
+#word-list {
+  border: 2px solid black;
+  width: 200px;
+  height: 600px;
+}
+
+#writing-area {
+  border: 2px solid black;
+  width: 200px;
+  height: 600px;
+}

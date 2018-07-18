@@ -14,24 +14,16 @@ class WritingContainer extends Component {
         <Grid divided='vertically'>
           <Grid.Row columns={2}>
             <Grid.Column >
-              <div>
               <WordList />
-              </div>
             </Grid.Column>
             <Grid.Column>
-              <div>
               <WritingArea/>
-              </div>
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </React.Fragment>
     )
   }
-
 }
-
-
-
 
 export default WritingContainer;

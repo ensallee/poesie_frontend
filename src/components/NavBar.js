@@ -4,7 +4,7 @@ import { Input, Menu, Button } from 'semantic-ui-react'
 
 const NavBar = (props) => {
   return (
-  <Menu secondary size='big'>
+  <Menu secondary size='large'>
     <Menu.Item
       as={NavLink}
       exact to="/write"

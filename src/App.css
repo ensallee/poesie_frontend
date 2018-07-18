@@ -90,12 +90,20 @@
 
 #word-list {
   border: 2px solid black;
-  width: 200px;
+  width: 400px;
   height: 600px;
+  overflow: auto;
 }
 
 #writing-area {
   border: 2px solid black;
-  width: 200px;
+  width: 400px;
   height: 600px;
+}
+
+.word {
+  border: 1px solid black;
+  padding: 2px;
+  display: inline-block;
+  margin: 1px;
 }

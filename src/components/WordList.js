@@ -43,7 +43,7 @@ const mapStateToProps = (state) => {
     verbs: state.verbs,
     prepositions: state.prepositions,
     adverbs: state.adverbs,
-    // articles: state.articles
+    articles: state.articles
   }
 }
 

@@ -31,6 +31,14 @@ class Adapter {
     return fetch(`https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=adverb&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=12&limit=5&api_key=${env.app_key}`)
     .then(resp=> resp.json())
   }
+
+  static isLoggedIn() {
+    return !!localStorage.getItem('token');
+  }
+
+  static logout() {
+    localStorage.removeItem('token');
+  }
 }
 
 export default Adapter;

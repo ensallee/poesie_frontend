@@ -93,12 +93,14 @@
   width: 400px;
   height: 600px;
   overflow: auto;
+  margin: 0 auto;
 }
 
 #writing-area {
   border: 2px solid black;
   width: 400px;
   height: 600px;
+  margin: 0 auto;
 }
 
 .word {

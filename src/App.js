@@ -21,25 +21,3 @@ class App extends Component {
 }
 
 export default App;
-
-// <div className="App">
-//         <NavBar2 />
-//         <h1 className="pageTitle">Gourmand</h1>
-//         <div id="edamam-badge" data-color="white"></div>
-//     <div className="body">
-//         <br></br>
-//           <Route exact path="/" component={(props) => <SearchContainer {...props}/>}/>
-//           { Adapter.isLoggedIn() ?
-//             <Fragment>
-//               <Redirect to="/" />
-//               <Route exact path="/my_recipes" component={(props) => <RecipeList {...props}/>} />
-//               <Route exact path="/new_recipe" component={(props) => <NewRecipeForm {...props} />}/>
-//             </Fragment>
-//             :
-//             <Fragment>
-//               <Route exact path="/register" component={(props) => <Register {...props} />} />
-//               <Route exact path="/login" component={(props) => <Login {...props} />} />
-//             </Fragment>
-//           }
-//         </div>
-//       </div>

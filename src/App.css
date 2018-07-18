@@ -90,16 +90,18 @@
 
 #word-list {
   border: 2px solid black;
-  width: 400px;
+  width: 70%;
   height: 600px;
+  float: right;
   overflow: auto;
   margin: 0 auto;
 }
 
 #writing-area {
   border: 2px solid black;
-  width: 400px;
+  width: 70%;
   height: 600px;
+  float: left;
   margin: 0 auto;
 }
 

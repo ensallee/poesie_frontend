@@ -6,7 +6,8 @@ let initialState = {
   verbs: ["study", "work", "sleep", "eat"],
   prepositions: ["in", "behind", "ahead"],
   adverbs: ["slowly", "quickly"],
-  articles: ["a", "the", "an"]
+  articles: ["a", "the", "an"],
+  conjunctions: ["and", "or", "but"]
 }
 
 export default function reducer(state=initialState, action) {

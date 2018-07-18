@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Word from './Word'
 import { connect } from 'react-redux'
 import getWords from '../actions'
+import { Container, Button } from 'semantic-ui-react';
 
 class WordList extends Component {
 
@@ -17,7 +18,7 @@ class WordList extends Component {
 }
 
   render() {
-    let combinedWords = this.props.nouns.concat(this.props.adjectives).concat(this.props.verbs).concat(this.props.prepositions).concat(this.props.articles).concat(this.props.adverbs)
+    let combinedWords = this.props.nouns.concat(this.props.adjectives).concat(this.props.verbs).concat(this.props.prepositions).concat(this.props.articles).concat(this.props.adverbs).concat(this.props.conjunctions)
     console.log('combined', combinedWords)
     let shuffledWords = this.shuffle(combinedWords)
     console.log('shuffled', shuffledWords)
@@ -26,11 +27,11 @@ class WordList extends Component {
     })
     return (
       <Fragment>
-        <div id="word-list">
-          <button onClick={this.props.getWords}>Get Words</button>
+        <Container id="word-list">
+          <Button content='Get Words' onClick={this.props.getWords} />
           <h1>Inside Word List</h1>
           {wordComponents}
-        </div>
+        </Container>
       </Fragment>
     )
   }
@@ -43,7 +44,8 @@ const mapStateToProps = (state) => {
     verbs: state.verbs,
     prepositions: state.prepositions,
     adverbs: state.adverbs,
-    articles: state.articles
+    articles: state.articles,
+    conjunctions: state.conjunctions
   }
 }
 

@@ -28,8 +28,8 @@ export default function reducer(state=initialState, action) {
       Adapter.getAdverbs()
       .then(data => console.log('adverbs', data))
 
-      Adapter.getArticles()
-      .then(data => console.log('articles', data))
+      // Adapter.getArticles()
+      // .then(data => console.log('articles', data))
     default:
       return state;
   }

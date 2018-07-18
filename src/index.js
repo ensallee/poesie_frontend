@@ -9,7 +9,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import reducer from './reducer'
 
 const store=createStore(reducer)
-console.log(store.getState())
+// console.log(store.getState())
 
 ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
 registerServiceWorker();

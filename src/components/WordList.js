@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Word from './Word'
 import { connect } from 'react-redux'
+import getWords from '../actions'
 
 class WordList extends Component {
 
@@ -26,7 +27,7 @@ class WordList extends Component {
     return (
       <Fragment>
         <div id="word-list">
-          <button onClick={this.props.getWords()}>Get Words</button>
+          <button onClick={this.props.getWords}>Get Words</button>
           <h1>Inside Word List</h1>
           {wordComponents}
         </div>
@@ -42,20 +43,16 @@ const mapStateToProps = (state) => {
     verbs: state.verbs,
     prepositions: state.prepositions,
     adverbs: state.adverbs,
-    articles: state.articles
+    // articles: state.articles
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return { getWords: () => {
-      return () => {
-        const action = {
-          type: "GET_WORDS"
-        }
-        dispatch(action);
-      }
-    }
+  return {
+    getWords: () => dispatch(getWords())
   }
 }
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(WordList);

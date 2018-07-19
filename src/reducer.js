@@ -1,6 +1,6 @@
 import Adapter from './components/Adapter'
 // import { GET_WORDS } from './actions'
-import { UPDATE_NOUNS, UPDATE_VERBS } from './actions'
+import { UPDATE_NOUNS, UPDATE_VERBS, UPDATE_ADJECTIVES } from './actions'
 
 let initialState = {
   nouns: ["student", "table", "water", "music"],
@@ -37,7 +37,9 @@ export default function reducer(state=initialState, action) {
     case UPDATE_NOUNS:
       return {...state, nouns: action.payload};
     case UPDATE_VERBS:
-      return {...state, verbs: action.payload}
+      return {...state, verbs: action.payload};
+    case UPDATE_ADJECTIVES:
+      return {...state, adjectives: action.payload}
     default:
       return state;
   }

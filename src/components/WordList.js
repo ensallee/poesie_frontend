@@ -4,7 +4,7 @@ import Adapter from './Adapter'
 import { connect } from 'react-redux'
 // import getWords from '../actions'
 import { Container, Button } from 'semantic-ui-react';
-import { updateNouns, updateVerbs } from '../actions'
+import { updateNouns, updateVerbs, updateAdjectives } from '../actions'
 
 class WordList extends Component {
 
@@ -16,6 +16,10 @@ class WordList extends Component {
       Adapter.getVerbs().then(json => {
         console.log('verbs inside handleclick', json);
         this.props.updateVerbs(json)
+      })
+      Adapter.getAdjectives().then(json => {
+        console.log('adjectives inside handleclick', json);
+        this.props.updateAdjectives(json)
       })
     }
 
@@ -33,7 +37,9 @@ class WordList extends Component {
   render() {
     let nouns = this.props.nouns.map(nounObj => nounObj.word)
     let verbs = this.props.verbs.map(verbObj => verbObj.word)
-    let combinedWords = nouns.concat(this.props.adjectives).concat(verbs).concat(this.props.prepositions).concat(this.props.articles).concat(this.props.adverbs).concat(this.props.conjunctions)
+    let adjectives = this.props.adjectives.map(adjObj => adjObj.word)
+    // console.log('adjectives inside of wordlist render', adjectives)
+    let combinedWords = nouns.concat(adjectives).concat(verbs).concat(this.props.prepositions).concat(this.props.articles).concat(this.props.adverbs).concat(this.props.conjunctions)
     console.log('combined', combinedWords)
     let shuffledWords = this.shuffle(combinedWords)
     console.log('shuffled', shuffledWords)
@@ -67,7 +73,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateNouns: (nouns) => dispatch(updateNouns(nouns)),
-    updateVerbs: (verbs) => dispatch(updateVerbs(verbs))
+    updateVerbs: (verbs) => dispatch(updateVerbs(verbs)),
+    updateAdjectives: (adjectives) => dispatch(updateAdjectives(adjectives))
   }
 }
 

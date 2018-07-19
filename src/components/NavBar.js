@@ -6,7 +6,7 @@ import LogoutButton from './LogoutButton'
 
 const NavBar = (props) => {
   return (
-    <Menu secondary size='big'>
+    <Menu secondary size='large'>
       <Menu.Item
         as={NavLink}
         exact to="/write"

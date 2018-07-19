@@ -19,9 +19,9 @@ class WordList extends Component {
 
   render() {
     let combinedWords = this.props.nouns.concat(this.props.adjectives).concat(this.props.verbs).concat(this.props.prepositions).concat(this.props.articles).concat(this.props.adverbs).concat(this.props.conjunctions)
-    console.log('combined', combinedWords)
+    // console.log('combined', combinedWords)
     let shuffledWords = this.shuffle(combinedWords)
-    console.log('shuffled', shuffledWords)
+    // console.log('shuffled', shuffledWords)
     let wordComponents = shuffledWords.map(word => {
       return <Word word={word} />
     })

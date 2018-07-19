@@ -1,4 +1,6 @@
 import Adapter from './components/Adapter'
+// import { GET_WORDS } from './actions'
+import { UPDATE_NOUNS } from './actions'
 
 let initialState = {
   nouns: ["student", "table", "water", "music"],
@@ -12,25 +14,28 @@ let initialState = {
 
 export default function reducer(state=initialState, action) {
   switch(action.type) {
-    case 'GET_WORDS':
-      Adapter.getNouns()
-      // .then((data) => { return ...state, nouns: data})
-      .then(data => console.log('nouns', data))
-
-      Adapter.getVerbs()
-      .then(data => console.log('verbs', data))
-
-      Adapter.getAdjectives()
-      .then(data => console.log('adjectives', data))
-
-      Adapter.getPrepositions()
-      .then(data => console.log('prepositions', data))
-
-      Adapter.getAdverbs()
-      .then(data => console.log('adverbs', data))
-
-      // Adapter.getArticles()
-      // .then(data => console.log('articles', data))
+    // case GET_WORDS:
+    //   Adapter.getNouns()
+    //   // .then((data) => { return ...state, nouns: data})
+    //   .then(data => console.log('nouns', data))
+    //
+    //   Adapter.getVerbs()
+    //   .then(data => console.log('verbs', data))
+    //
+    //   Adapter.getAdjectives()
+    //   .then(data => console.log('adjectives', data))
+    //
+    //   Adapter.getPrepositions()
+    //   .then(data => console.log('prepositions', data))
+    //
+    //   Adapter.getAdverbs()
+    //   .then(data => console.log('adverbs', data))
+    //
+    //   //NO MORE ARTICLES THEY ARE BAD
+    //   // Adapter.getArticles()
+    //   // .then(data => console.log('articles', data))
+    case UPDATE_NOUNS:
+      return {...state, nouns: action.payload}
     default:
       return state;
   }

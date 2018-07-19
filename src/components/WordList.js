@@ -1,10 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import Word from './Word'
+import Adapter from './Adapter'
 import { connect } from 'react-redux'
-import getWords from '../actions'
+// import getWords from '../actions'
 import { Container, Button } from 'semantic-ui-react';
+import { updateNouns } from '../actions'
 
 class WordList extends Component {
+
+    handleClick = (event) => {
+      Adapter.getNouns().then(json => {
+        console.log('nouns inside handleclick', json);
+        this.props.updateNouns(json)
+      })
+    }
 
    shuffle = (array) => {
     var j, x, i;
@@ -18,7 +27,8 @@ class WordList extends Component {
 }
 
   render() {
-    let combinedWords = this.props.nouns.concat(this.props.adjectives).concat(this.props.verbs).concat(this.props.prepositions).concat(this.props.articles).concat(this.props.adverbs).concat(this.props.conjunctions)
+    let nouns = this.props.nouns.map(nounObj => nounObj.word)
+    let combinedWords = nouns.concat(this.props.adjectives).concat(this.props.verbs).concat(this.props.prepositions).concat(this.props.articles).concat(this.props.adverbs).concat(this.props.conjunctions)
     console.log('combined', combinedWords)
     let shuffledWords = this.shuffle(combinedWords)
     console.log('shuffled', shuffledWords)
@@ -28,7 +38,7 @@ class WordList extends Component {
     return (
       <Fragment>
         <Container id="word-list">
-          <Button content='Get Words' onClick={this.props.getWords} />
+          <Button content='Get Words' onClick={this.handleClick} />
           <h1>Inside Word List</h1>
           {wordComponents}
         </Container>
@@ -51,7 +61,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getWords: () => dispatch(getWords())
+    updateNouns: (nouns) => dispatch(updateNouns(nouns))
   }
 }
 

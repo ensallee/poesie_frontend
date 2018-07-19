@@ -4,7 +4,7 @@ import Adapter from './Adapter'
 import { connect } from 'react-redux'
 // import getWords from '../actions'
 import { Container, Button } from 'semantic-ui-react';
-import { updateNouns, updateVerbs, updateAdjectives, updatePrepositions, updateAdverbs } from '../actions'
+import { updateNouns, updateVerbs, updateAdjectives, updatePrepositions, updateAdverbs, updateOthers } from '../actions'
 
 class WordList extends Component {
 
@@ -29,6 +29,7 @@ class WordList extends Component {
         console.log('adverbs inside handleclick', json);
         this.props.updateAdverbs(json)
       })
+      this.props.updateOthers()
     }
 
    shuffle = (array) => {
@@ -49,7 +50,7 @@ class WordList extends Component {
     let prepositions = this.props.prepositions.map(prepObj => prepObj.word)
     let adverbs = this.props.adverbs.map(adverbObj => adverbObj.word)
     // console.log('adjectives inside of wordlist render', adjectives)
-    let combinedWords = nouns.concat(adjectives).concat(verbs).concat(prepositions).concat(this.props.articles).concat(adverbs).concat(this.props.conjunctions)
+    let combinedWords = nouns.concat(adjectives).concat(verbs).concat(prepositions).concat(adverbs).concat(this.props.others)
     console.log('combined', combinedWords)
     let shuffledWords = this.shuffle(combinedWords)
     console.log('shuffled', shuffledWords)
@@ -75,8 +76,7 @@ const mapStateToProps = (state) => {
     verbs: state.verbs,
     prepositions: state.prepositions,
     adverbs: state.adverbs,
-    articles: state.articles,
-    conjunctions: state.conjunctions
+    others: state.others
   }
 }
 
@@ -86,7 +86,8 @@ const mapDispatchToProps = (dispatch) => {
     updateVerbs: (verbs) => dispatch(updateVerbs(verbs)),
     updateAdjectives: (adjectives) => dispatch(updateAdjectives(adjectives)),
     updatePrepositions: (prepositions) => dispatch(updatePrepositions(prepositions)),
-    updateAdverbs: (adverbs) => dispatch(updateAdverbs(adverbs))
+    updateAdverbs: (adverbs) => dispatch(updateAdverbs(adverbs)),
+    updateOthers: () => dispatch(updateOthers())
   }
 }
 

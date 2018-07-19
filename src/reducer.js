@@ -1,16 +1,19 @@
 import Adapter from './components/Adapter'
 // import { GET_WORDS } from './actions'
-import { UPDATE_NOUNS, UPDATE_VERBS, UPDATE_ADJECTIVES, UPDATE_PREPOSITIONS, UPDATE_ADVERBS } from './actions'
+import { UPDATE_NOUNS, UPDATE_VERBS, UPDATE_ADJECTIVES, UPDATE_PREPOSITIONS, UPDATE_ADVERBS, UPDATE_OTHERS } from './actions'
 
 let initialState = {
-  nouns: ["student", "table", "water", "music"],
-  adjectives: ["hungry", "thirsty", "tired"],
-  verbs: ["study", "work", "sleep", "eat"],
-  prepositions: ["in", "behind", "ahead"],
-  adverbs: ["slowly", "quickly"],
-  articles: ["a", "the", "an"],
-  conjunctions: ["and", "or", "but"]
+  nouns: [],
+  adjectives: [],
+  verbs: [],
+  prepositions: [],
+  adverbs: [],
+  others: []
 }
+
+// let articles = ["a", "the", "an"]
+// let conjunctions = ["and", "or", "but"]
+let others = ["a", "the", "an", "and", "or", "but", "he", "she", "they", "it", "we", "his", "hers", "our", "are", "is", "were", "s", "es"]
 
 export default function reducer(state=initialState, action) {
   switch(action.type) {
@@ -44,6 +47,8 @@ export default function reducer(state=initialState, action) {
       return {...state, prepositions: action.payload}
     case UPDATE_ADVERBS:
       return {...state, adverbs: action.payload}
+    case UPDATE_OTHERS:
+      return {...state, others: others}
     default:
       return state;
   }

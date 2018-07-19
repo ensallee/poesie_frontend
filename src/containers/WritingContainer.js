@@ -6,21 +6,29 @@ import NavBar from '../components/NavBar'
 
 class WritingContainer extends Component {
 
+  //this will need a state of sourceArea and destArea, pointing to the values in console.log below.
+
+
+  componentDidMount() {
+    console.log(this.dest, this.source);
+    // console.log(this.refs.source.getBoundingClientRect())
+    console.log(this.source.refs.area.getBoundingClientRect())
+    console.log(this.dest.refs.area.getBoundingClientRect())
+
+    // this.setState({
+    //   sourceArea: this.refs.source.getBoundingClientRect()
+    // })
+  }
+
   render() {
     return (
       <React.Fragment>
         <NavBar />
         <h1>Poesie</h1>
-        <Grid divided='vertically'>
-          <Grid.Row columns={2}>
-            <Grid.Column >
-              <WordList />
-            </Grid.Column>
-            <Grid.Column>
-              <WritingArea/>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <div className="writing-container">
+          <WordList ref={connectedComponent => this.source = connectedComponent.getWrappedInstance()} />
+          <WritingArea ref={ref => this.dest = ref}/>
+        </div>
       </React.Fragment>
     )
   }

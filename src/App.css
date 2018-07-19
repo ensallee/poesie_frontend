@@ -88,21 +88,31 @@
     border-radius: 20px;
 }
 
+/*
+  The auto gives you fixed size and scrolling when it gets too big
+  If you want it to be flexible and expand, use min-height?
+
+  The not dragging is because of how deeply nested in the HTML the words are.
+  They are behind other elements now so you can't actually click them ouside of the div.
+*/
 #word-list {
   border: 2px solid black;
-  width: 70%;
-  height: 600px;
+  /* min-width: 70%; */
+  min-height: 600px;
   float: right;
-  overflow: auto;
+  /* overflow: auto; */
   margin: 0 auto;
+  flex: 1;
 }
 
 #writing-area {
   border: 2px solid black;
-  width: 70%;
-  height: 600px;
+  min-height: 600px;
+  /* width: 70%;
+  height: 600px; */
   float: left;
   margin: 0 auto;
+  flex: 1;
 }
 
 .word {
@@ -110,4 +120,8 @@
   padding: 2px;
   display: inline-block;
   margin: 1px;
+}
+
+.writing-container {
+  display: flex;
 }

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 // import getWords from '../actions'
 import { Container, Button } from 'semantic-ui-react';
 import { updateNouns, updateVerbs, updateAdjectives, updatePrepositions, updateAdverbs, updateOthers } from '../actions'
+import uuid from 'uuid';
 
 class WordList extends Component {
 
@@ -43,6 +44,10 @@ class WordList extends Component {
     return array;
 }
 
+  // That's because of two things:
+  // 1. you have no key so it uses index by default
+  // 2. draggable I think somehow remembers it relative to the parent container,
+  //    so new words with the same key will end up in a funky place
   render() {
     let nouns = this.props.nouns.map(nounObj => nounObj.word)
     let verbs = this.props.verbs.map(verbObj => verbObj.word)
@@ -55,16 +60,14 @@ class WordList extends Component {
     let shuffledWords = this.shuffle(combinedWords)
     console.log('shuffled', shuffledWords)
     let wordComponents = shuffledWords.map(word => {
-      return <Word word={word} />
+      return <Word key={uuid()} word={word} />
     })
     return (
-      <Fragment>
-        <Container id="word-list">
+        <div ref="area" id="word-list">
           <Button content='Get Words' onClick={this.handleClick} />
           <h1>Inside Word List</h1>
           {wordComponents}
-        </Container>
-      </Fragment>
+        </div>
     )
   }
 }
@@ -93,4 +96,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(WordList);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(WordList);

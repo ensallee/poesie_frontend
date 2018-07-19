@@ -3,6 +3,7 @@ export const UPDATE_NOUNS = "UPDATE_NOUNS"
 export const UPDATE_VERBS = "UPDATE_VERBS"
 export const UPDATE_ADJECTIVES = "UPDATE_ADJECTIVES"
 export const UPDATE_PREPOSITIONS = "UPDATE_PREPOSITIONS"
+export const UPDATE_ADVERBS = "UPDATE_ADVERBS"
 
 export function getWords(){
   return ({type: GET_WORDS});
@@ -33,5 +34,12 @@ export function updatePrepositions(prepositions) {
   return {
     type: UPDATE_PREPOSITIONS,
     payload: prepositions
+  }
+}
+
+export function updateAdverbs(adverbs) {
+  return {
+    type: UPDATE_ADVERBS,
+    payload: adverbs
   }
 }

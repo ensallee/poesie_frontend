@@ -4,7 +4,7 @@ import Adapter from './Adapter'
 import { connect } from 'react-redux'
 // import getWords from '../actions'
 import { Container, Button } from 'semantic-ui-react';
-import { updateNouns, updateVerbs, updateAdjectives, updatePrepositions } from '../actions'
+import { updateNouns, updateVerbs, updateAdjectives, updatePrepositions, updateAdverbs } from '../actions'
 
 class WordList extends Component {
 
@@ -25,6 +25,10 @@ class WordList extends Component {
         console.log('prepositions inside handleclick', json);
         this.props.updatePrepositions(json)
       })
+      Adapter.getAdverbs().then(json => {
+        console.log('adverbs inside handleclick', json);
+        this.props.updateAdverbs(json)
+      })
     }
 
    shuffle = (array) => {
@@ -43,8 +47,9 @@ class WordList extends Component {
     let verbs = this.props.verbs.map(verbObj => verbObj.word)
     let adjectives = this.props.adjectives.map(adjObj => adjObj.word)
     let prepositions = this.props.prepositions.map(prepObj => prepObj.word)
+    let adverbs = this.props.adverbs.map(adverbObj => adverbObj.word)
     // console.log('adjectives inside of wordlist render', adjectives)
-    let combinedWords = nouns.concat(adjectives).concat(verbs).concat(prepositions).concat(this.props.articles).concat(this.props.adverbs).concat(this.props.conjunctions)
+    let combinedWords = nouns.concat(adjectives).concat(verbs).concat(prepositions).concat(this.props.articles).concat(adverbs).concat(this.props.conjunctions)
     console.log('combined', combinedWords)
     let shuffledWords = this.shuffle(combinedWords)
     console.log('shuffled', shuffledWords)
@@ -80,7 +85,8 @@ const mapDispatchToProps = (dispatch) => {
     updateNouns: (nouns) => dispatch(updateNouns(nouns)),
     updateVerbs: (verbs) => dispatch(updateVerbs(verbs)),
     updateAdjectives: (adjectives) => dispatch(updateAdjectives(adjectives)),
-    updatePrepositions: (preposition) => dispatch(updatePrepositions(preposition))
+    updatePrepositions: (prepositions) => dispatch(updatePrepositions(prepositions)),
+    updateAdverbs: (adverbs) => dispatch(updateAdverbs(adverbs))
   }
 }
 

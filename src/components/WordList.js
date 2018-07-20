@@ -11,23 +11,23 @@ class WordList extends Component {
 
     handleClick = (event) => {
       Adapter.getNouns().then(json => {
-        console.log('nouns inside handleclick', json);
+        // console.log('nouns inside handleclick', json);
         this.props.updateNouns(json)
       })
       Adapter.getVerbs().then(json => {
-        console.log('verbs inside handleclick', json);
+        // console.log('verbs inside handleclick', json);
         this.props.updateVerbs(json)
       })
       Adapter.getAdjectives().then(json => {
-        console.log('adjectives inside handleclick', json);
+        // console.log('adjectives inside handleclick', json);
         this.props.updateAdjectives(json)
       })
       Adapter.getPrepositions().then(json => {
-        console.log('prepositions inside handleclick', json);
+        // console.log('prepositions inside handleclick', json);
         this.props.updatePrepositions(json)
       })
       Adapter.getAdverbs().then(json => {
-        console.log('adverbs inside handleclick', json);
+        // console.log('adverbs inside handleclick', json);
         this.props.updateAdverbs(json)
       })
       this.props.updateOthers()
@@ -56,11 +56,11 @@ class WordList extends Component {
     let adverbs = this.props.adverbs.map(adverbObj => adverbObj.word)
     // console.log('adjectives inside of wordlist render', adjectives)
     let combinedWords = nouns.concat(adjectives).concat(verbs).concat(prepositions).concat(adverbs).concat(this.props.others)
-    console.log('combined', combinedWords)
+    // console.log('combined', combinedWords)
     let shuffledWords = this.shuffle(combinedWords)
-    console.log('shuffled', shuffledWords)
+    // console.log('shuffled', shuffledWords)
     let wordComponents = shuffledWords.map(word => {
-      return <Word key={uuid()} word={word} />
+      return <Word allWords={shuffledWords} key={uuid()} word={word} />
     })
     return (
         <div ref="area" id="word-list">

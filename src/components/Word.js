@@ -7,6 +7,8 @@ class Word extends Component {
 
     this.state={
        activeDrags: 0,
+       sourceWords: this.props.allWords,
+       selected: []
        // sourceList: //this points to wordList in mike's code, not sure what to do here because there are so many keys in this.state.
        // destlist: [],
        //mike has a sourceArea and a destArea
@@ -16,14 +18,70 @@ class Word extends Component {
     }
   }
 
+  // state = {
+  //   selectedWords: []
+  // }
+
   onStart(e) {
     e.preventDefault()
     // this.setState({activeDrags: ++this.state.activeDrags});
   }
 
-  onStop(e:MouseEvent, data: Object, id) {
+  onStop = (e:MouseEvent, data: Object, id) => {
     console.log('Event: ', e)
     console.log('data: ', data)
+    console.log('word', data.node.firstChild.data)
+    if (this.state.selected.find(w => w.word === data.node.firstChild.data)) {
+      console.log('inside the true block so word is here')
+      let wordToChange = this.state.selected.find(w => w.word === data.node.firstChild.data)
+        console.log('wordtoChange before change', wordToChange)
+        let parent = document.getElementById('writing-area')
+        let elm = data.node
+        let newTop = elm.offsetTop - parent.offsetTop;
+        let newLeft = elm.offsetLeft - parent.offsetLeft;
+        console.log('new top and left', newTop, newLeft)
+
+    } else {
+      console.log('inside the false block so word isnt here')
+      let parent = document.getElementById('writing-area')
+      let elm = data.node
+      let childOffset = {
+      top: elm.offsetTop - parent.offsetTop,
+      left: elm.offsetLeft - parent.offsetLeft
+      }
+      let newWord = {
+        word: data.node.firstChild.data,
+        top: elm.offsetTop - parent.offsetTop,
+        left: elm.offsetLeft - parent.offsetLeft
+      }
+      let selectedWords = this.state.selected
+      let newWords = [...selectedWords, newWord]
+      this.setState({
+        selected: newWords
+      }, () => console.log(this.state))
+    }
+    // let parent = document.getElementById('writing-area')
+    // var elm = data.node
+    // console.log('parent node', elm.parentNode)
+    // console.log(elm.offsetLeft, elm.offsetTop);
+    // var childOffset = {
+    // top: elm.offsetTop - parent.offsetTop,
+    // left: elm.offsetLeft - parent.offsetLeft
+    // }
+    // let newWord = {
+    //   word: data.node.firstChild.data,
+    //   top: elm.offsetTop - parent.offsetTop,
+    //   left: elm.offsetLeft - parent.offsetLeft
+    // }
+    // console.log('childOffset', childOffset)
+    // console.log('newWord', newWord)
+    // console.log('childoffset', childOffset)
+    // console.log('newWord', newWord)
+    // let selectedWords = this.state.selected
+    // let newWords = [...selectedWords, newWord]
+    // this.setState({
+    //   selected: newWords
+    // }, () => console.log(this.state))
     //FROM MIKES INSTRUCTIONS:
     //find the word inside of state. he had this:
     //let movedWord = this.state.wordList.find(w => w.id === id)

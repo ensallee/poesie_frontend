@@ -35,30 +35,24 @@ class WordList extends Component {
 
    shuffle = (array) => {
     var j, x, i;
-    for (i = array.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = array[i];
-        array[i] = array[j];
-        array[j] = x;
-    }
+      for (i = array.length - 1; i > 0; i--) {
+          j = Math.floor(Math.random() * (i + 1));
+          x = array[i];
+          array[i] = array[j];
+          array[j] = x;
+      }
     return array;
-}
+   }
 
-  // That's because of two things:
-  // 1. you have no key so it uses index by default
-  // 2. draggable I think somehow remembers it relative to the parent container,
-  //    so new words with the same key will end up in a funky place
   render() {
+    console.log('refs inside wordList', this.refss)
     let nouns = this.props.nouns.map(nounObj => nounObj.word)
     let verbs = this.props.verbs.map(verbObj => verbObj.word)
     let adjectives = this.props.adjectives.map(adjObj => adjObj.word)
     let prepositions = this.props.prepositions.map(prepObj => prepObj.word)
     let adverbs = this.props.adverbs.map(adverbObj => adverbObj.word)
-    // console.log('adjectives inside of wordlist render', adjectives)
     let combinedWords = nouns.concat(adjectives).concat(verbs).concat(prepositions).concat(adverbs).concat(this.props.others)
-    // console.log('combined', combinedWords)
     let shuffledWords = this.shuffle(combinedWords)
-    // console.log('shuffled', shuffledWords)
     let wordComponents = shuffledWords.map(word => {
       return <Word allWords={shuffledWords} key={uuid()} word={word} />
     })

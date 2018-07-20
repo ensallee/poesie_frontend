@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable'
+import ReactDOM from 'react-dom';
 
 class Word extends Component {
   constructor(props) {
     super(props)
 
     this.state={
-       activeDrags: 0,
        sourceWords: this.props.allWords,
        selected: []
        // sourceList: //this points to wordList in mike's code, not sure what to do here because there are so many keys in this.state.
@@ -18,9 +18,6 @@ class Word extends Component {
     }
   }
 
-  // state = {
-  //   selectedWords: []
-  // }
 
   onStart(e) {
     e.preventDefault()
@@ -28,61 +25,55 @@ class Word extends Component {
   }
 
   onStop = (e:MouseEvent, data: Object, id) => {
+
     console.log('Event: ', e)
     console.log('data: ', data)
+    // console.log('refs inside parent', this.parentNode.refs.source.getBoundingClientRect())
+    var writingContainer = document.querySelector('.writing-container')
+    let source = ReactDOM.findDOMNode(writingContainer.source.refs.area)
+    debugger
+    console.log('source', source)
     console.log('word', data.node.firstChild.data)
     if (this.state.selected.find(w => w.word === data.node.firstChild.data)) {
       console.log('inside the true block so word is here')
       let wordToChange = this.state.selected.find(w => w.word === data.node.firstChild.data)
-        console.log('wordtoChange before change', wordToChange)
-        let parent = document.getElementById('writing-area')
-        let elm = data.node
-        let newTop = elm.offsetTop - parent.offsetTop;
-        let newLeft = elm.offsetLeft - parent.offsetLeft;
-        console.log('new top and left', newTop, newLeft)
+        // let parent = document.getElementById('writing-area')
+        // let elm = data.node
+        let newX = data.x
+        let newY = data.y
+        console.log('new top and left', newX, newY)
+        let adjustedWords = this.state.selected.map(w => {
+          if (w.word === wordToChange) {
+            return {...w, xCord: newX, yCord: newY}
+          } else {
+            return w
+          }
+        })
+        console.log('adjustedWords', adjustedWords)
 
     } else {
       console.log('inside the false block so word isnt here')
-      let parent = document.getElementById('writing-area')
-      let elm = data.node
-      let childOffset = {
-      top: elm.offsetTop - parent.offsetTop,
-      left: elm.offsetLeft - parent.offsetLeft
-      }
+      // let parent = document.getElementById('writing-area')
+      // let elm = data.node
+      // let childOffset = {
+      // top: elm.offsetTop - parent.offsetTop,
+      // left: elm.offsetLeft - parent.offsetLeft
+      // }
+      //the above doesn't work because offsetTop and offsetLeft aren't changing when you move the div.
+      console.log('x', data.x)
+      console.log('y', data.y)
       let newWord = {
         word: data.node.firstChild.data,
-        top: elm.offsetTop - parent.offsetTop,
-        left: elm.offsetLeft - parent.offsetLeft
+        xCord: data.x,
+        yCord: data.y
       }
       let selectedWords = this.state.selected
       let newWords = [...selectedWords, newWord]
       this.setState({
         selected: newWords
-      }, () => console.log(this.state))
+      }, () => console.log('set state', this.state))
     }
-    // let parent = document.getElementById('writing-area')
-    // var elm = data.node
-    // console.log('parent node', elm.parentNode)
-    // console.log(elm.offsetLeft, elm.offsetTop);
-    // var childOffset = {
-    // top: elm.offsetTop - parent.offsetTop,
-    // left: elm.offsetLeft - parent.offsetLeft
-    // }
-    // let newWord = {
-    //   word: data.node.firstChild.data,
-    //   top: elm.offsetTop - parent.offsetTop,
-    //   left: elm.offsetLeft - parent.offsetLeft
-    // }
-    // console.log('childOffset', childOffset)
-    // console.log('newWord', newWord)
-    // console.log('childoffset', childOffset)
-    // console.log('newWord', newWord)
-    // let selectedWords = this.state.selected
-    // let newWords = [...selectedWords, newWord]
-    // this.setState({
-    //   selected: newWords
-    // }, () => console.log(this.state))
-    //FROM MIKES INSTRUCTIONS:
+    //NOTES ON MIKES INSTRUCTIONS:
     //find the word inside of state. he had this:
     //let movedWord = this.state.wordList.find(w => w.id === id)
     //then, remove it from both sourceList and destList inside state

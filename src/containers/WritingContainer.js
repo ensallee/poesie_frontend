@@ -10,10 +10,10 @@ class WritingContainer extends Component {
 
 
   componentDidMount() {
-    console.log(this.dest, this.source);
+    console.log('this.dest and this.source', this.dest, this.source);
     // console.log(this.refs.source.getBoundingClientRect())
-    console.log(this.source.refs.area.getBoundingClientRect())
-    console.log(this.dest.refs.area.getBoundingClientRect())
+    console.log('this.source.refs', this.source.refs.area.getBoundingClientRect())
+    console.log('this.source.dest', this.dest.refs.area.getBoundingClientRect())
 
     // this.setState({
     //   sourceArea: this.refs.source.getBoundingClientRect()

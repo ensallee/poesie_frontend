@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Poem from './Poem';
+import NavBar from './NavBar'
+import { Carousel } from 'react-responsive-carousel';
 
 class MyPoems extends Component {
   state = {
@@ -43,10 +45,11 @@ class MyPoems extends Component {
     })
     console.log('inside render')
     return (
-      <div>
+      <Fragment>
+        <NavBar />
         <h2>My Poems</h2>
         {poemComponents}
-      </div>
+      </Fragment>
     )
   }
 }

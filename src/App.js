@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import WritingContainer from './containers/WritingContainer'
 import './App.css';
 import Home from './components/Home'
-import NavBar from './components/NavBar'
+// import NavBar from './components/NavBar'
 import RegistrationForm from './components/RegistrationForm'
 import LogInForm from './components/LogInForm'
 import MyPoems from './components/MyPoems'

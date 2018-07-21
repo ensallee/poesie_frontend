@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Poem = (props) => {
   console.log('props inside Poem', props)
   return (
-    <img src={props.url} />
+      <img src={props.url} />
   )
 }
 

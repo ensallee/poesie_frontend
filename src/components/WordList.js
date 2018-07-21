@@ -10,28 +10,31 @@ import html2canvas from 'html2canvas';
 
 class WordList extends Component {
 
-    handleClick = (event) => {
+    fetchAllWords() {
       Adapter.getNouns().then(json => {
-        console.log('nouns inside handleclick', json);
         this.props.updateNouns(json)
       })
       Adapter.getVerbs().then(json => {
-        console.log('verbs inside handleclick', json);
         this.props.updateVerbs(json)
       })
       Adapter.getAdjectives().then(json => {
-        console.log('adjectives inside handleclick', json);
         this.props.updateAdjectives(json)
       })
       Adapter.getPrepositions().then(json => {
-        console.log('prepositions inside handleclick', json);
         this.props.updatePrepositions(json)
       })
       Adapter.getAdverbs().then(json => {
-        console.log('adverbs inside handleclick', json);
         this.props.updateAdverbs(json)
       })
       this.props.updateOthers()
+    }
+
+    componentDidMount() {
+      this.fetchAllWords()
+    }
+
+    handleClick = (event) => {
+      this.fetchAllWords()
     }
 
    shuffle = (array) => {
@@ -62,10 +65,10 @@ class WordList extends Component {
   }
 
   savePoem = (e) => {
-    console.log('this inside savePoem', this)
-    console.log('inside savePoem')
+    // console.log('this inside savePoem', this)
+    // console.log('inside savePoem')
     let wordListDiv = document.getElementById('word-list')
-    console.log(wordListDiv)
+    // console.log(wordListDiv)
     //the below works! It takes a screen shot of the div and appends it to the DOM. Now I need it to just convert the screen shot into an image, rather than saving it to the DOM.
     // html2canvas(wordListDiv).then(function(canvas) {
     // document.body.appendChild(canvas)})
@@ -88,7 +91,7 @@ class WordList extends Component {
   }
 
   postPoem = (src) => {
-    console.log('src inside of postPoem', src)
+    // console.log('src inside of postPoem', src)
     let body = {
       poem: {
         url: src
@@ -107,36 +110,30 @@ class WordList extends Component {
     .then(resp => resp.json())
     .then(data => {
       console.log(data);
-      // this.props.history.push("/my_poems");
+      this.props.history.push("/my_poems")
       }
     )
   }
 
-  // That's because of two things:
-  // 1. you have no key so it uses index by default
-  // 2. draggable I think somehow remembers it relative to the parent container,
-  //    so new words with the same key will end up in a funky place
   render() {
     let nouns = this.props.nouns.map(nounObj => nounObj.word)
     let verbs = this.props.verbs.map(verbObj => verbObj.word)
     let adjectives = this.props.adjectives.map(adjObj => adjObj.word)
     let prepositions = this.props.prepositions.map(prepObj => prepObj.word)
     let adverbs = this.props.adverbs.map(adverbObj => adverbObj.word)
-    // console.log('adjectives inside of wordlist render', adjectives)
     let combinedWords = nouns.concat(adjectives).concat(verbs).concat(prepositions).concat(adverbs).concat(this.props.others)
-    console.log('combined', combinedWords)
     let shuffledWords = this.shuffle(combinedWords)
-    console.log('shuffled', shuffledWords)
     let wordComponents = shuffledWords.map(word => {
       return <Word key={uuid()} word={word} />
     })
     return (
-        <div ref="area" id="word-list">
-          <Button content='Get Words' onClick={this.handleClick} />
-          <h1>Inside Word List</h1>
-          {wordComponents}
+        <Fragment>
+          <Button content='Refresh Words' onClick={this.handleClick} />
           <Button content="Save Poem" onClick={this.savePoem}/>
+        <div ref="area" id="word-list">
+          {wordComponents}
         </div>
+        </Fragment>
     )
   }
 }
@@ -164,5 +161,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(WordList);
+//this was the export I was using when I needed a ref
+// export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(WordList);
+export default connect(mapStateToProps, mapDispatchToProps)(WordList)

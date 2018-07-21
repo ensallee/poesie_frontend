@@ -99,7 +99,7 @@
   border: 2px solid black;
   /* min-width: 70%; */
   min-height: 600px;
-  float: right;
+  /* float: right; */
   /* overflow: auto; */
   margin: 0 auto;
   flex: 1;
@@ -112,7 +112,7 @@
   height: 600px; */
   float: left;
   margin: 0 auto;
-  flex: 1;
+  /* flex: 1; */
 }
 
 .word {
@@ -123,9 +123,14 @@
 }
 
 .writing-container {
-  display: flex;
+  /* display: flex; */
 }
 
 .hidden {
   visibility: hidden;
+}
+
+.main-buttons {
+  margin: 5px;
+  color: blue;
 }

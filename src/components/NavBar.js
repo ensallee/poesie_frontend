@@ -6,7 +6,7 @@ import LogoutButton from './LogoutButton'
 
 const NavBar = (props) => {
   return (
-    <Menu secondary size='big'>
+    <Menu secondary size='large'>
       <Menu.Item
         as={NavLink}
         exact to="/write"
@@ -48,29 +48,3 @@ const NavBar = (props) => {
 }
 
 export default NavBar;
-
-
-<Menu secondary size='large'>
-  <Menu.Item
-    as={NavLink}
-    exact to="/write"
-    name='write'
-  />
-  <Menu.Item
-    as={NavLink}
-    exact to="/my_poems"
-    name='myPoems'
-  />
-  <Menu.Item
-    as={NavLink}
-    exact to="/register"
-    name='register'
-    color='blue'
-  />
-  <Menu.Item
-    as={NavLink}
-    exact to="/login"
-    name='login'
-    color='green'
-  />
-</Menu>

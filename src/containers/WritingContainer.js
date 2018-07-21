@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import WordList from '../components/WordList';
 import WritingArea from '../components/WritingArea';
-import { Grid } from 'semantic-ui-react';
+// import { Grid } from 'semantic-ui-react';
 import NavBar from '../components/NavBar'
+import Adapter from '../components/Adapter'
 
 class WritingContainer extends Component {
 
@@ -10,7 +11,7 @@ class WritingContainer extends Component {
 
 
   componentDidMount() {
-    console.log(this.dest, this.source);
+    // console.log(this.dest, this.source);
     // console.log(this.refs.source.getBoundingClientRect())
     //I commented out the below two lines because I was attempting the single div with canvas approach
     // console.log(this.source.refs.area.getBoundingClientRect())
@@ -19,6 +20,7 @@ class WritingContainer extends Component {
     // this.setState({
     //   sourceArea: this.refs.source.getBoundingClientRect()
     // })
+    console.log('props inside writing container', this.props)
   }
 
 
@@ -32,7 +34,7 @@ class WritingContainer extends Component {
         <NavBar />
         <h1>Poesie</h1>
         <div className="writing-container">
-          <WordList />
+          <WordList history={this.props.history} />
         </div>
       </React.Fragment>
     )

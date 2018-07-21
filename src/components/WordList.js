@@ -79,22 +79,37 @@ class WordList extends Component {
     //the below successfully appends the image to the DOM! So, now I just need to save the src on the back end and then re-render inside an img tag on the front end.
     html2canvas(wordListDiv).then((canvas) => {
       var image = new Image()
-      image.src = canvas.toDataURL("image/png")
-      console.log(image)
-      document.body.appendChild(image)
-      return image;
+      let src = canvas.toDataURL("image/png")
+      // console.log(image)
+      // document.body.appendChild(image)
+      // return image;
+      this.postPoem(src)
     })
-    // {
-    //     onrendered: function(canvas) {
-    //         console.log('canvas after render', canvas)
-    //         let wordListDivCanvas = document.getElementById('wordListDivCanvas')
-    //         wordListDivCanvas.remove();
-    //         document.body.append(canvas).find('canvas').last()
-            // .css('display', 'none') \
-            // .attr('id', 'gitshoesCanvas');
-            // formDiv.slideDown(); /* Ignore this line */
-    //     }
-    // });
+  }
+
+  postPoem = (src) => {
+    console.log('src inside of postPoem', src)
+    let body = {
+      poem: {
+        url: src
+      }
+    }
+
+    let config = {
+      method: 'POST',
+      headers: {"Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+      },
+      body: JSON.stringify(body)
+    }
+
+    fetch('http://localhost:4000/poems/', config)
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
+      // this.props.history.push("/my_poems");
+      }
+    )
   }
 
   // That's because of two things:

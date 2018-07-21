@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Poem from './Poem';
 
 class MyPoems extends Component {
   state = {
@@ -11,7 +12,7 @@ class MyPoems extends Component {
 
   getPoems = () => {
     fetch(
-      `http://localhost:3000/my-poems`,
+      `http://localhost:4000/my-poems`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -26,7 +27,7 @@ class MyPoems extends Component {
     .then(json => {
       this.setState({
         poems: json,
-      });
+      }, () => console.log(this.state.poems));
     })
     .catch(err => {
       console.log('catch');
@@ -37,10 +38,14 @@ class MyPoems extends Component {
   }
 
   render() {
+    let poemComponents = this.state.poems.map((poem) => {
+      return <Poem url={poem.url} />
+    })
     console.log('inside render')
     return (
       <div>
         <h2>My Poems</h2>
+        {poemComponents}
       </div>
     )
   }

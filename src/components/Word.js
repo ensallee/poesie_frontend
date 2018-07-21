@@ -29,10 +29,10 @@ class Word extends Component {
     console.log('Event: ', e)
     console.log('data: ', data)
     // console.log('refs inside parent', this.parentNode.refs.source.getBoundingClientRect())
-    var writingContainer = document.querySelector('.writing-container')
-    let source = ReactDOM.findDOMNode(writingContainer.source.refs.area)
-    debugger
-    console.log('source', source)
+    //this findDOMNode thing came from https://hackernoon.com/refs-in-react-all-you-need-to-know-fb9c9e2aeb81
+    // var writingContainer = document.querySelector('.writing-container')
+    // let writingArea = document.getElementById('writing-area')
+    // let wordList = document.getElementById('word-list')
     console.log('word', data.node.firstChild.data)
     if (this.state.selected.find(w => w.word === data.node.firstChild.data)) {
       console.log('inside the true block so word is here')

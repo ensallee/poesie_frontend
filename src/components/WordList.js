@@ -45,7 +45,6 @@ class WordList extends Component {
    }
 
   render() {
-    console.log('refs inside wordList', this.refss)
     let nouns = this.props.nouns.map(nounObj => nounObj.word)
     let verbs = this.props.verbs.map(verbObj => verbObj.word)
     let adjectives = this.props.adjectives.map(adjObj => adjObj.word)
@@ -57,6 +56,7 @@ class WordList extends Component {
       return <Word allWords={shuffledWords} key={uuid()} word={word} />
     })
     return (
+      //sound the ref be source and not area?
         <div ref="area" id="word-list">
           <Button content='Get Words' onClick={this.handleClick} />
           <h1>Inside Word List</h1>

@@ -125,3 +125,7 @@
 .writing-container {
   display: flex;
 }
+
+.hidden {
+  visibility: hidden;
+}

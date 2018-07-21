@@ -56,6 +56,14 @@ class Word extends Component {
   // the preventdefault thing.
   // not that i can tell, maybe it's position={null}?
 
+  handleDoubleClick(e) {
+    console.log('inside handleDoubleClick')
+    console.log('event target inside doubleclick', e.target)
+    let el = e.target
+    console.log('el after I grabbed it', el)
+    el.classList.add('hidden')
+  }
+
 
 
   render() {
@@ -64,7 +72,7 @@ class Word extends Component {
         onStart={this.onStart}
         onDrag={this.handleDrag}
         onStop={this.onStop}>
-        <div className="handle word">{this.props.word}</div>
+        <div className="handle word" onDoubleClick={this.handleDoubleClick}>{this.props.word}</div>
       </Draggable>
     );
   }

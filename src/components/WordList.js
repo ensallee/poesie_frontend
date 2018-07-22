@@ -91,7 +91,6 @@ class WordList extends Component {
   }
 
   postPoem = (src) => {
-    // console.log('src inside of postPoem', src)
     let body = {
       poem: {
         url: src

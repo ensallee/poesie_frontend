@@ -103,6 +103,8 @@
   /* overflow: auto; */
   margin: 0 auto;
   flex: 1;
+  width: 900px;
+  height: 500px;
 }
 
 #writing-area {
@@ -133,4 +135,13 @@
 .main-buttons {
   margin: 5px;
   color: blue;
+}
+
+.carousel-container {
+  margin: 0 auto;
+  width: 750px;
+}
+
+.carousel-control {
+  background: none !important;
 }

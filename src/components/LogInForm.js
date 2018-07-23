@@ -7,6 +7,7 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
+    currentUser: {}
   }
 
   handleChange = (event) => {
@@ -18,21 +19,27 @@ class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log('state inside login', this.state)
-    this.props.setUser(this.state);
-    this.props.history.push("/write");
+    // this.props.setUser(this.state);
+    // this.props.history.push("/write"); //I commented this out because of async issues with my original approach
     //
-    // fetch(`http://localhost:4000/sessions/`, {
-    //   method: 'POST',
-    //   headers: {
-    //     "Content-Type": 'application/json'
-    //   },
-    //   body: JSON.stringify(this.state)
-    // })
-    //   .then(res => res.json())
-    //   .then(json => {
-    //     localStorage.setItem('token', json.token);
-    //     this.props.history.push("/write");
-    //   })
+    fetch(`http://localhost:4000/sessions/`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then(res => res.json())
+      .then(json => {
+        console.log('json inside login before setting state', json)
+        localStorage.setItem('token', json.token);
+        this.setState({
+          currentUser: json.id
+        }, () => {
+          this.props.setUser(this.state.currentUser);
+          this.props.history.push("/write");
+        })
+      })
   }
 
   render() {

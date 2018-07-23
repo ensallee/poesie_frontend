@@ -4,6 +4,7 @@ import NavBar from './NavBar'
 import ReactDOM from 'react-dom';
 // import { Carousel } from 'react-responsive-carousel';
 import { Carousel } from 'react-bootstrap';
+import Profile from './Profile'
 
 class MyPoems extends Component {
   state = {
@@ -72,8 +73,9 @@ class MyPoems extends Component {
     return (
       <Fragment>
         <NavBar />
-        <h2>My Poems</h2>
+        <Profile />
           <div className="carousel-container">
+          <h2>My Poems</h2>
           <Carousel>
             {poemComponents.reverse()}
           </Carousel>

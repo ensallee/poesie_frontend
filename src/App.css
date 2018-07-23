@@ -154,3 +154,14 @@
 .delete-button {
   color: black;
 }
+
+.user-details {
+  float: left;
+}
+
+/*an attempt to center content vertically*/
+/* .user-details p {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+} */

@@ -11,11 +11,11 @@ export function getWords(){
   return ({type: GET_WORDS});
 }
 
-export function setUser(userObj) {
-  console.log('userObj inside setUser action', userObj)
+export function setUser(userId) {
+  console.log('userId inside setUser action', userId)
   return {
     type: SET_USER,
-    payload: userObj
+    payload: userId
   }
 }
 

@@ -13,18 +13,21 @@ class Profile extends Component {
     }
   }
 
-  componentDidMount() {
-    console.log('props inside currentUser', this.props.currentUser)
+  componentDidMount = () => {
+    // console.log('props inside currentUser', this.props.currentUser
     let config = {
       method: "GET",
       headers: {"Content-Type": "application/json",
           "Authorization": localStorage.getItem('token')
         }
     }
-    fetch(`http://localhost:4000/users/${this.props.currentUser}`, config)
+    // fetch(`http://localhost:4000/users/${this.props.currentUser}`, config)
+    fetch(`http://localhost:4000/users/${localStorage.id}`, config)
     .then(resp => resp.json())
     .then(data => {
-      console.log('data after fetch inside profile', data);
+      console.log('this before debuggger', this)
+      // debugger
+      // console.log('data after fetch inside profile', data);
       this.setState({
         username: data.username,
         displayName: data.display_name,

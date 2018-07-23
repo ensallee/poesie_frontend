@@ -33,6 +33,9 @@ class Login extends Component {
       .then(json => {
         console.log('json inside login before setting state', json)
         localStorage.setItem('token', json.token);
+        //is this okay?
+        localStorage.setItem('id', json.id);
+        //try to get rid of set state and just go into reducer with json.id
         this.setState({
           currentUser: json.id
         }, () => {

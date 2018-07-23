@@ -43,8 +43,8 @@ class MyPoems extends Component {
   }
 
   handleDelete(id) {
-    console.log('inside delete')
-    console.log('id', id)
+    // console.log('inside delete')
+    // console.log('id', id)
     let config = {
       method: "DELETE",
       headers: {"Content-Type": "application/json",
@@ -83,5 +83,7 @@ class MyPoems extends Component {
     )
   }
 }
+
+//pulling params out of route: location.url--ask JON.
 
 export default MyPoems;

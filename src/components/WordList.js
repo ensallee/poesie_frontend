@@ -48,22 +48,6 @@ class WordList extends Component {
     return array;
 }
 
-  convertURIToImageData(URI) {
-    return new Promise(function(resolve, reject) {
-      if (URI == null) return reject();
-      var canvas = document.createElement('canvas'),
-          context = canvas.getContext('2d'),
-          image = new Image();
-      image.addEventListener('load', function() {
-        canvas.width = image.width;
-        canvas.height = image.height;
-        context.drawImage(image, 0, 0, canvas.width, canvas.height);
-        resolve(context.getImageData(0, 0, canvas.width, canvas.height));
-      }, false);
-      image.src = URI;
-    });
-  }
-
   savePoem = (e) => {
     // console.log('this inside savePoem', this)
     // console.log('inside savePoem')
@@ -127,8 +111,8 @@ class WordList extends Component {
     })
     return (
         <Fragment>
-          <Button content='Refresh Words' onClick={this.handleClick} />
-          { Adapter.isLoggedIn() ? <Button content="Save Poem" onClick={this.savePoem}/> : null }
+          <button className="main-button" onClick={this.handleClick}>Refresh Words</button>
+          { Adapter.isLoggedIn() ? <button className="main-button" onClick={this.savePoem}>Save Poem</button> : null }
         <div ref="area" id="word-list">
           {wordComponents}
         </div>
@@ -136,6 +120,7 @@ class WordList extends Component {
     )
   }
 }
+// <Button content='Refresh Words' onClick={this.handleClick} />
 
 const mapStateToProps = (state) => {
   return {

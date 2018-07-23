@@ -32,7 +32,7 @@ class WritingContainer extends Component {
     return (
       <React.Fragment>
         <NavBar />
-        <h1>Poesie</h1>
+        <h1 className="title">Poesie</h1>
         <div className="writing-container">
           <WordList history={this.props.history} />
         </div>

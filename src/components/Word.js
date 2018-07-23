@@ -18,43 +18,12 @@ class Word extends Component {
 
   onStart(e) {
     e.preventDefault()
-    // this.setState({activeDrags: ++this.state.activeDrags});
   }
 
   onStop(e:MouseEvent, data: Object, id) {
     console.log('Event: ', e)
     console.log('data: ', data)
-    //FROM MIKES INSTRUCTIONS:
-    //find the word inside of state. he had this:
-    //let movedWord = this.state.wordList.find(w => w.id === id)
-    //then, remove it from both sourceList and destList inside state
-
-    //then, do something like this:
-    // const {left, right, top, bottom} = this.refs.source.getBoundingClientRect()
-    //and do some math:
-    // if (e.x > left && e.x < right && e.y > top && e.y < bottom) {
-    // console.log('in sourcebox')
-    //then, inside of sourcebox:
-    //sourceList.push(movedWord) }
-    // else {
-      // destList.push(movedWord)
-    // }
-
-    //then set state with sourceList && destList
   }
-
-  //Mike set up a componenetDidMount to set state for sourceArea & destArea, but that won't work when user resizes so maybe don't do that.
-
-
-  // axis="both"
-  // handle=".handle"
-  //
-  // position={null}
-
-  // That column is because of how div in div styles in css
-  // The unable to drag part, I'm not sure what happens there.
-  // the preventdefault thing.
-  // not that i can tell, maybe it's position={null}?
 
   handleDoubleClick(e) {
     console.log('inside handleDoubleClick')
@@ -63,8 +32,6 @@ class Word extends Component {
     console.log('el after I grabbed it', el)
     el.classList.add('hidden')
   }
-
-
 
   render() {
     return (

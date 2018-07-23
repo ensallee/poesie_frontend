@@ -129,7 +129,8 @@
 }
 
 .hidden {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 
 .main-buttons {
@@ -168,4 +169,17 @@
   position: relative;
   top: 50%;
   transform: perspective(1px) translateY(-50%);
+}
+
+.title {
+  font-family:'Cedarville Cursive', cursive;
+  font-size: 50px;
+}
+
+.main-button {
+  margin: 5px;
+  padding: 3px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  padding: 5px;
 }

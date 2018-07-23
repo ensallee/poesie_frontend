@@ -1,23 +1,47 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import WritingContainer from './containers/WritingContainer'
+import { BrowserRouter as Router, Route, Redirect, Switch, withRouter } from 'react-router-dom';
+import WritingContainer from './containers/WritingContainer';
 import './App.css';
-import Home from './components/Home'
+import Home from './components/Home';
 // import NavBar from './components/NavBar'
-import RegistrationForm from './components/RegistrationForm'
-import LogInForm from './components/LogInForm'
-import MyPoems from './components/MyPoems'
-import Adapter from './components/Adapter'
+import RegistrationForm from './components/RegistrationForm';
+import LogInForm from './components/LogInForm';
+import MyPoems from './components/MyPoems';
+import Adapter from './components/Adapter';
+import { connect } from 'react-redux';
+import { setUser } from './actions';
+import NavBar from './components/NavBar'
 
 class App extends Component {
+
+  componentDidMount() {
+    if (localStorage.token) {
+      console.log('it has a token!')
+      console.log('id inside app', localStorage.id)
+      let config = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": localStorage.getItem('token')
+        }
+      }
+      fetch(`http://localhost:4000/users/${localStorage.id}`, config)
+      .then(resp => resp.json())
+      .then(data => this.props.setUser(data.id))
+    } else {
+      console.log('no token!')
+    }
+  }
+
   render() {
     return (
       <div className="App">
+        <Switch>
         <Route exact path ="/" component={(props) => <Home {...props}/>} />
         <Route exact path="/write" component={(props) => <WritingContainer {...props}/>} />
           { Adapter.isLoggedIn() ?
             <Fragment>
-              <Redirect to="/write" />
+
               <Route exact path="/my_poems" component={(props) => <MyPoems {...props} />} />
             </Fragment>
             :
@@ -26,9 +50,18 @@ class App extends Component {
               <Route exact path="/login" component={(props) => <LogInForm {...props} />} />
             </Fragment>
           }
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (userInfo) => dispatch(setUser(userInfo))
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(App));
+
+//from convo with Jon and Garry July 23: create a loading attribute on the store, that defaults to false. when you're ready to set user, first trigger an action that sets loading to true. then, trigger another action that sets the user and once that promise resolves, set loading to false.

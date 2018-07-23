@@ -20,7 +20,7 @@ class WritingContainer extends Component {
     // this.setState({
     //   sourceArea: this.refs.source.getBoundingClientRect()
     // })
-    console.log('props inside writing container', this.props)
+    // console.log('props inside writing container', this.props)
   }
 
 

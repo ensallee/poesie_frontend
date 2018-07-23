@@ -128,7 +128,7 @@ class WordList extends Component {
     return (
         <Fragment>
           <Button content='Refresh Words' onClick={this.handleClick} />
-          <Button content="Save Poem" onClick={this.savePoem}/>
+          { Adapter.isLoggedIn() ? <Button content="Save Poem" onClick={this.savePoem}/> : null }
         <div ref="area" id="word-list">
           {wordComponents}
         </div>

@@ -76,25 +76,13 @@ class MyPoems extends Component {
         <Profile />
           <div className="carousel-container">
           <h2>My Poems</h2>
-          <Carousel>
+          {this.state.poems.length !== 0 ? <Carousel>
             {poemComponents.reverse()}
-          </Carousel>
+          </Carousel> : <h4>You don't have any poems yet.</h4> }
           </div>
       </Fragment>
     )
   }
 }
-
-
-// {poemComponents}
-// <Carousel.Item>
-//   <img width={900} height={500} alt="900x500" src="https://images.unsplash.com/photo-1532265095586-2214de652e25?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7306e2c16748194eb04b150278f2b4e7&auto=format&fit=crop&w=1051&q=80" />
-// </Carousel.Item>
-// <Carousel.Item>
-//   <img width={900} height={500} alt="900x500" src="https://images.unsplash.com/photo-1532248607602-8cf95e01d3f7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8483df99df717bb09cd746551ca81872&auto=format&fit=crop&w=1050&q=80" />
-// </Carousel.Item>
-// <Carousel.Item>
-//   <img width={900} height={500} alt="900x500" src="https://images.unsplash.com/photo-1532196164534-ae5912fea015?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ecc5d48c07aa697020ac59ff22775266&auto=format&fit=crop&w=1050&q=80" />
-// </Carousel.Item>
 
 export default MyPoems;

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Grid, Segment } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { setUser } from '../actions';
 
 class Login extends Component {
   state = {
@@ -15,19 +17,22 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
-    fetch(`http://localhost:4000/sessions/`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": 'application/json'
-      },
-      body: JSON.stringify(this.state)
-    })
-      .then(res => res.json())
-      .then(json => {
-        localStorage.setItem('token', json.token);
-        this.props.history.push("/write");
-      })
+    console.log('state inside login', this.state)
+    this.props.setUser(this.state);
+    this.props.history.push("/write");
+    //
+    // fetch(`http://localhost:4000/sessions/`, {
+    //   method: 'POST',
+    //   headers: {
+    //     "Content-Type": 'application/json'
+    //   },
+    //   body: JSON.stringify(this.state)
+    // })
+    //   .then(res => res.json())
+    //   .then(json => {
+    //     localStorage.setItem('token', json.token);
+    //     this.props.history.push("/write");
+    //   })
   }
 
   render() {
@@ -63,4 +68,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (userInfo) => dispatch(setUser(userInfo))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login)

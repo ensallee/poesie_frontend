@@ -11,8 +11,12 @@ export function getWords(){
   return ({type: GET_WORDS});
 }
 
-export function setUser() {
-  return ({type: SET_USER})
+export function setUser(userObj) {
+  console.log('userObj inside setUser action', userObj)
+  return {
+    type: SET_USER,
+    payload: userObj
+  }
 }
 
 export function updateNouns(nouns) {

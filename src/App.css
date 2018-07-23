@@ -145,3 +145,12 @@
 .carousel-control {
   background: none !important;
 }
+
+/*attempting to get delete button to float to the side of the poem container*/
+/* .carousel-caption {
+  width: 100% !important;
+} */
+
+.delete-button {
+  color: black;
+}

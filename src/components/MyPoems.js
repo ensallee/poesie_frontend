@@ -41,13 +41,31 @@ class MyPoems extends Component {
     })
   }
 
+  handleDelete(id) {
+    console.log('inside delete')
+    console.log('id', id)
+    let config = {
+      method: "DELETE",
+      headers: {"Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+      },
+    }
+
+    fetch(`http://localhost:4000/poems/${id}`, config)
+    .then(resp => resp.json())
+    .then(() => this.getPoems())
+  }
+
   render() {
     let poemComponents = this.state.poems.map((poem) => {
       // return <Poem url={poem.url} />
       return (
-          <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src={poem.url} />
-          </Carousel.Item>
+        <Carousel.Item>
+          <img width={900} height={500} alt="900x500" src={poem.url} />
+            <Carousel.Caption>
+              <button className="delete-button" onClick={() => this.handleDelete(poem.id)}>Delete</button>
+            </Carousel.Caption>
+        </Carousel.Item>
       )
     })
     console.log('inside render')

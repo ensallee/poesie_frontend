@@ -75,7 +75,6 @@ class MyPoems extends Component {
         <NavBar />
         <Profile />
           <div className="carousel-container">
-          <h2>My Poems</h2>
           {this.state.poems.length !== 0 ? <Carousel>
             {poemComponents.reverse()}
           </Carousel> : <h4>You don't have any poems yet.</h4> }

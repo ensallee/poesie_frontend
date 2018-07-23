@@ -39,9 +39,11 @@ class Profile extends Component {
     return (
       <Fragment>
         <div className="user-details">
+          <p>
           <h1>Name: {this.state.displayName}</h1>
           <h6>Location: {this.state.hometown}</h6>
           <h6>Bio: {this.state.bio}</h6>
+          </p>
         </div>
       </Fragment>
     )

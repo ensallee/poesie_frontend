@@ -139,12 +139,12 @@ class WordList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    nouns: state.nouns,
-    adjectives: state.adjectives,
-    verbs: state.verbs,
-    prepositions: state.prepositions,
-    adverbs: state.adverbs,
-    others: state.others
+    nouns: state.words.nouns,
+    adjectives: state.words.adjectives,
+    verbs: state.words.verbs,
+    prepositions: state.words.prepositions,
+    adverbs: state.words.adverbs,
+    others: state.words.others
   }
 }
 

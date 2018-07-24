@@ -26,7 +26,7 @@ class Profile extends Component {
     fetch(`http://localhost:4000/users/${localStorage.id}`, config)
     .then(resp => resp.json())
     .then(data => {
-      console.log('this before debuggger', this)
+      // console.log('this before debuggger', this)
       // debugger
       // console.log('data after fetch inside profile', data);
       this.setState({
@@ -45,8 +45,8 @@ class Profile extends Component {
         <div className="user-details">
           <p>
           <h1>Name: {this.state.displayName}</h1>
-          <h6>Location: {this.state.hometown}</h6>
-          <h6>Bio: {this.state.bio}</h6>
+          <h4>Location: {this.state.hometown}</h4>
+          <h4>Bio: {this.state.bio}</h4>
           </p>
         </div>
       </Fragment>

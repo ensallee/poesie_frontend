@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import Poem from './Poem';
+// import Poem from './Poem';
 import NavBar from './NavBar'
 import ReactDOM from 'react-dom';
 // import { Carousel } from 'react-responsive-carousel';
@@ -7,6 +7,7 @@ import { Carousel } from 'react-bootstrap';
 import Profile from './Profile';
 import { connect } from 'react-redux';
 import OtherUserProfile from './OtherUserProfile';
+import uuid from 'uuid';
 
 class MyPoems extends Component {
   state = {
@@ -84,7 +85,7 @@ class MyPoems extends Component {
     let poemComponents = this.state.poems.map((poem) => {
       console.log('like count of poems', poem.likes_count)
       return (
-        <Carousel.Item>
+        <Carousel.Item key={uuid()}>
           <img width={900} height={500} alt="900x500" src={poem.url} />
             {this.props.location.pathname.split('/')[2] === localStorage.id ? <button className="delete-button" onClick={() => this.handleDelete(poem.id)}>Delete</button> : null}
             <button className="like-button" onClick={() => this.handleLike(poem.id, poem.likes_count)}>{poem.likes_count} Likes</button>

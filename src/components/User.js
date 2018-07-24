@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react'
 // import { withRouter } from 'react-router';
 
 class User extends Component {
 
   handleClick = () =>  {
-    console.log('inside handle click of User')
+    // console.log('inside handle click of User')
     this.props.history.push(`users/${this.props.id}/poems`)
   }
 
+//again, I had to user localStorage.id here instead of using the current user in the store
   render() {
     return (
       <Card>
@@ -20,10 +21,11 @@ class User extends Component {
           <Card.Description>{this.props.bio}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <a>
             <Icon name='user' />
-            22 Friends
-          </a>
+            {this.props.followers.length} Followers | {this.props.following.length} Following
+            <br></br>
+            <br></br>
+            {localStorage.id != this.props.id ? <button onClick={() => this.props.handleFollow(this.props.id)} className="follow-button">Follow</button> : null }
         </Card.Content>
       </Card>
     )

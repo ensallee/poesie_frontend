@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Input, Menu, Button } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import Adapter from './Adapter'
 import LogoutButton from './LogoutButton'
 import { connect } from 'react-redux'

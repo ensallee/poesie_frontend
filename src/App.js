@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 import WritingContainer from './containers/WritingContainer';
 import UsersContainer from './containers/UsersContainer'
 import './App.css';
@@ -11,7 +11,7 @@ import MyPoems from './components/MyPoems';
 import Adapter from './components/Adapter';
 import { connect } from 'react-redux';
 import { setUser } from './actions';
-import NavBar from './components/NavBar'
+// import NavBar from './components/NavBar'
 
 class App extends Component {
 

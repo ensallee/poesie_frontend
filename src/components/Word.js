@@ -21,15 +21,15 @@ class Word extends Component {
   }
 
   onStop(e:MouseEvent, data: Object, id) {
-    console.log('Event: ', e)
-    console.log('data: ', data)
+    // console.log('Event: ', e)
+    // console.log('data: ', data)
   }
 
   handleDoubleClick(e) {
-    console.log('inside handleDoubleClick')
-    console.log('event target inside doubleclick', e.target)
+    // console.log('inside handleDoubleClick')
+    // console.log('event target inside doubleclick', e.target)
     let el = e.target
-    console.log('el after I grabbed it', el)
+    // console.log('el after I grabbed it', el)
     el.classList.add('hidden')
   }
 

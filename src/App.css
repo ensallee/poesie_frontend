@@ -240,3 +240,8 @@
   border-radius: 5px;
   padding: 5px;
 }
+
+.follow-button {
+  display: block;
+  margin: 0 auto;
+}

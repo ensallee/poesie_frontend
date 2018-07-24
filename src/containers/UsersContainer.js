@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import NavBar from '../components/NavBar'
 import User from '../components/User'
+import { Card } from 'semantic-ui-react'
 
 class UsersContainer extends Component {
   constructor(props){
@@ -36,7 +37,9 @@ class UsersContainer extends Component {
     return (
       <Fragment>
         <NavBar />
-        {userComponents}
+          <Card.Group centered itemsPerRow={4}>
+            {userComponents}
+          </Card.Group>
       </Fragment>
     )
   }

@@ -6,7 +6,7 @@ const Home = (props) => {
     <section className="hero">
       <div className="hero-inner">
         <h1>Poesie</h1>
-        <button onClick={() => props.history.push("/write")}>Explore</button>
+        <button className="hero-button" onClick={() => props.history.push("/write")}>Explore</button>
         </div>
     </section>
     </Fragment>

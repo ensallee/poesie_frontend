@@ -43,6 +43,7 @@
 }
 
 /*for first page */
+/*this isn't being used*/
   .hero .btn {
     /* Positioning and sizing */
     display: block;
@@ -66,6 +67,7 @@
 }
 
 /*for first page */
+/*this isn't being used*/
   .hero .btn:hover {
     /* Positioning and sizing */
     display: block;
@@ -86,6 +88,48 @@
     /* Border styles */
     border: 3px solid rgb(160, 7, 72);
     border-radius: 20px;
+}
+
+.hero-button {
+  display: block;
+  width: 200px;
+
+  /* Padding and margins */
+  padding: .5em;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* Text styles */
+  color: black;
+  text-decoration: none;
+  font-size: 1.5em;
+
+
+  /* Border styles */
+  border: 3px solid black;
+  border-radius: 20px;
+}
+
+.hero-button:hover {
+  display: block;
+  width: 200px;
+
+  /* Padding and margins */
+  padding: .5em;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* Text styles */
+  color: rgb(4, 102, 179);
+  text-decoration: none;
+  font-size: 1.5em;
+
+
+  /* Border styles */
+  border: 3px solid rgb(4, 102, 179);
+  border-radius: 20px;
 }
 
 /*
@@ -157,11 +201,25 @@
 
 .delete-button {
   color: black;
+  margin-top: 8px;
+  margin-right: 2px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.like-button {
+  color: black;
+  margin-top: 8px;
+  margin-left: 2px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
 }
 
 .user-details {
   float: left;
   height: 500px;
+  padding: 3px;
+  background-color: #FFFFFF;
 }
 
 /*an attempt to center content vertically*/
@@ -178,7 +236,6 @@
 
 .main-button {
   margin: 5px;
-  padding: 3px;
   background-color: #FFFFFF;
   border-radius: 5px;
   padding: 5px;

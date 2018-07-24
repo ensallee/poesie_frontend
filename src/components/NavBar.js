@@ -20,6 +20,11 @@ const NavBar = (props) => {
               exact to={`/users/${props.currentUser}/poems`}
               name='MyPoems'
             />
+            <Menu.Item
+              as={NavLink}
+              exact to="/users"
+              name='Community'
+            />
           <Menu.Menu position='right'>
             <Menu.Item
               as={LogoutButton}

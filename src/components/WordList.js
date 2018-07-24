@@ -49,27 +49,11 @@ class WordList extends Component {
 }
 
   savePoem = (e) => {
-    // console.log('this inside savePoem', this)
-    // console.log('inside savePoem')
     let wordListDiv = document.getElementById('word-list')
-    // console.log(wordListDiv)
-    //the below works! It takes a screen shot of the div and appends it to the DOM. Now I need it to just convert the screen shot into an image, rather than saving it to the DOM.
-    // html2canvas(wordListDiv).then(function(canvas) {
-    // document.body.appendChild(canvas)})
-
-    // html2canvas(wordListDiv).then((canvas) => {
-    //   let image_data_url = (canvas).toDataURL();
-    //   this.convertURIToImageData(image_data_url).then(function(imageData) {
-    //     console.log('imageData', imageData);
-    // });
-    // })
-    //the below successfully appends the image to the DOM! So, now I just need to save the src on the back end and then re-render inside an img tag on the front end.
     html2canvas(wordListDiv).then((canvas) => {
+      //not sure I need the line that's creating a new image.
       var image = new Image()
       let src = canvas.toDataURL("image/png")
-      // console.log(image)
-      // document.body.appendChild(image)
-      // return image;
       this.postPoem(src)
     })
   }
@@ -120,7 +104,6 @@ class WordList extends Component {
     )
   }
 }
-// <Button content='Refresh Words' onClick={this.handleClick} />
 
 const mapStateToProps = (state) => {
   return {
@@ -145,7 +128,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
-//this was the export I was using when I needed a ref
-// export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(WordList);
 export default connect(mapStateToProps, mapDispatchToProps)(WordList)

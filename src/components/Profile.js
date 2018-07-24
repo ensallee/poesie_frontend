@@ -22,6 +22,7 @@ class Profile extends Component {
         }
     }
     // fetch(`http://localhost:4000/users/${this.props.currentUser}`, config)
+    //again, this.props.currentUser worked at first, but on refresh, it's an empty object so I had to user localStorage. WHY?!
     fetch(`http://localhost:4000/users/${localStorage.id}`, config)
     .then(resp => resp.json())
     .then(data => {

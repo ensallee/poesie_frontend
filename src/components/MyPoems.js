@@ -4,7 +4,9 @@ import NavBar from './NavBar'
 import ReactDOM from 'react-dom';
 // import { Carousel } from 'react-responsive-carousel';
 import { Carousel } from 'react-bootstrap';
-import Profile from './Profile'
+import Profile from './Profile';
+import { connect } from 'react-redux';
+import OtherUserProfile from './OtherUserProfile';
 
 class MyPoems extends Component {
   state = {
@@ -59,6 +61,7 @@ class MyPoems extends Component {
     .then(() => this.getPoems())
   }
 
+  //in the below render method, I'm having to user localStorage.id to identify the current user instead of this.props.currentUser bc/ currentUser is coming back as an empty object, even after log in. I don't understand why this keeps happening.
   render() {
     let poemComponents = this.state.poems.map((poem) => {
       // return <Poem url={poem.url} />
@@ -74,17 +77,23 @@ class MyPoems extends Component {
     return (
       <Fragment>
         <NavBar />
-        <Profile />
+        {this.props.location.pathname.split('/')[2] === localStorage.id ? <Profile /> : <OtherUserProfile id={this.props.location.pathname.split('/')[2]} />}
           <div className="carousel-container">
           {this.state.poems.length !== 0 ? <Carousel>
             {poemComponents.reverse()}
-          </Carousel> : <h4>You don't have any poems yet.</h4> }
+          </Carousel> : <h4>No poems yet.</h4> }
           </div>
       </Fragment>
     )
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser.currentUser,
+  }
+}
+
 //pulling params out of route: location.url--ask JON.
 
-export default MyPoems;
+export default connect(mapStateToProps)(MyPoems);

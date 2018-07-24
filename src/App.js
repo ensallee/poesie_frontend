@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import WritingContainer from './containers/WritingContainer';
+import UsersContainer from './containers/UsersContainer'
 import './App.css';
 import Home from './components/Home';
 // import NavBar from './components/NavBar'
@@ -41,8 +42,8 @@ class App extends Component {
         <Route exact path="/write" component={(props) => <WritingContainer {...props}/>} />
           { Adapter.isLoggedIn() ?
             <Fragment>
-
               <Route exact path="/users/:id/poems" component={(props) => <MyPoems {...props} />} />
+              <Route exact path="/users" component={(props) => <UsersContainer {...props} />} />
             </Fragment>
             :
             <Fragment>

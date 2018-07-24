@@ -93,7 +93,7 @@ class WordList extends Component {
     .then(resp => resp.json())
     .then(data => {
       console.log(data);
-      this.props.history.push("/my_poems")
+      this.props.history.push(`/users/${this.props.currentUser}/poems`)
       }
     )
   }
@@ -129,7 +129,8 @@ const mapStateToProps = (state) => {
     verbs: state.words.verbs,
     prepositions: state.words.prepositions,
     adverbs: state.words.adverbs,
-    others: state.words.others
+    others: state.words.others,
+    currentUser: state.currentUser.currentUser
   }
 }
 

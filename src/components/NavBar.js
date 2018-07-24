@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Input, Menu, Button } from 'semantic-ui-react'
 import Adapter from './Adapter'
 import LogoutButton from './LogoutButton'
+import { connect } from 'react-redux'
 
 const NavBar = (props) => {
   return (
@@ -16,7 +17,7 @@ const NavBar = (props) => {
           <Fragment>
             <Menu.Item
               as={NavLink}
-              exact to="/my_poems"
+              exact to={`/users/${props.currentUser}/poems`}
               name='MyPoems'
             />
           <Menu.Menu position='right'>
@@ -47,4 +48,10 @@ const NavBar = (props) => {
   )
 }
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(NavBar);

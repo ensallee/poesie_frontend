@@ -42,7 +42,7 @@ class App extends Component {
           { Adapter.isLoggedIn() ?
             <Fragment>
 
-              <Route exact path="/my_poems" component={(props) => <MyPoems {...props} />} />
+              <Route exact path="/users/:id/poems" component={(props) => <MyPoems {...props} />} />
             </Fragment>
             :
             <Fragment>

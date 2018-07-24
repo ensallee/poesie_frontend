@@ -16,8 +16,10 @@ class MyPoems extends Component {
   }
 
   getPoems = () => {
+    let id = this.props.location.pathname.split('/')[2]
+    console.log('id inside my poems', id)
     fetch(
-      `http://localhost:4000/my-poems`,
+      `http://localhost:4000/users/${id}/poems`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +71,6 @@ class MyPoems extends Component {
         </Carousel.Item>
       )
     })
-    console.log('inside render')
     return (
       <Fragment>
         <NavBar />

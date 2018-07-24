@@ -68,7 +68,7 @@ class Login extends Component {
                   onChange={this.handleChange}
                   value={this.state.password}
                 />
-              <Form.Button type="submit" color='green' content="Login" />
+              <Form.Button type="submit" color='white' content="Login" />
               </Form>
             </Segment>
           </Grid.Row>

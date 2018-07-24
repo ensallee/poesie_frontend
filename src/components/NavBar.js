@@ -11,7 +11,7 @@ const NavBar = (props) => {
       <Menu.Item
         as={NavLink}
         exact to="/write"
-        name='write'
+        name='Poesie'
       />
         { Adapter.isLoggedIn() ?
           <Fragment>

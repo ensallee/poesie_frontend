@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react';
 
 const LogoutButton = ({ to = "/", history }) => {
     return (
-      <Button basic color='red'
+      <Button basic color='white'
         className="logout-button"
         onClick={() => {
           Adapter.logout();

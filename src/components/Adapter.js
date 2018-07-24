@@ -2,12 +2,12 @@ import env from '../env'
 
 class Adapter {
   static getNouns = () => {
-    return fetch(`https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=noun&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=12&limit=25&api_key=${env.app_key}`)
+    return fetch(`https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=noun&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=12&limit=35&api_key=${env.app_key}`)
     .then(resp=> resp.json())
   }
 
   static getVerbs = () => {
-    return fetch(`https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=verb&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=12&limit=25&api_key=${env.app_key}`)
+    return fetch(`https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=verb&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=12&limit=35&api_key=${env.app_key}`)
     .then(resp=> resp.json())
   }
 

@@ -4,14 +4,14 @@ import WritingContainer from './containers/WritingContainer';
 import UsersContainer from './containers/UsersContainer'
 import './App.css';
 import Home from './components/Home';
-// import NavBar from './components/NavBar'
 import RegistrationForm from './components/RegistrationForm';
 import LogInForm from './components/LogInForm';
 import MyPoems from './components/MyPoems';
 import Adapter from './components/Adapter';
 import { connect } from 'react-redux';
 import { setUser } from './actions';
-// import NavBar from './components/NavBar'
+import FollowersContainer from './containers/FollowersContainer';
+import FollowingContainer from './containers/FollowingContainer';
 
 class App extends Component {
 
@@ -43,6 +43,8 @@ class App extends Component {
           { Adapter.isLoggedIn() ?
             <Fragment>
               <Route exact path="/users/:id/poems" component={(props) => <MyPoems {...props} />} />
+              <Route exact path="/users/:id/followers" component={(props) => <FollowersContainer {...props} />} />
+              <Route exact path="/users/:id/following" component={(props) => <FollowingContainer {...props} />} />
               <Route exact path="/users" component={(props) => <UsersContainer {...props} />} />
             </Fragment>
             :

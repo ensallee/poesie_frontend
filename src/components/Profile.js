@@ -1,15 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom';
 
 class Profile extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      id: '',
       username: '',
       displayName: '',
       hometown: '',
-      bio: ''
+      bio: '',
+      following: [],
+      followers: []
     }
   }
 
@@ -30,16 +34,18 @@ class Profile extends Component {
       // debugger
       // console.log('data after fetch inside profile', data);
       this.setState({
+        id: data.id,
         username: data.username,
         displayName: data.display_name,
         hometown: data.hometown,
-        bio: data.bio
-      }, () => console.log('state on profile after settting state', this.state))
+        bio: data.bio,
+        following: data.following,
+        followers: data.followers
+      })
     })
   }
 
   render() {
-    // console.log('current user inside profile', this.props.currentUser)
     return (
       <Fragment>
         <div className="user-details">
@@ -47,6 +53,9 @@ class Profile extends Component {
           <h1>Name: {this.state.displayName}</h1>
           <h4>Location: {this.state.hometown}</h4>
           <h4>Bio: {this.state.bio}</h4>
+          <br></br>
+          <br></br>
+          <p><NavLink exact to={`/users/${this.state.id}/following`}> {this.state.following.length} Following </NavLink> | <NavLink exact to={`/users/${this.state.id}/followers`}> {this.state.followers.length} Followers</NavLink></p>
           </p>
         </div>
       </Fragment>

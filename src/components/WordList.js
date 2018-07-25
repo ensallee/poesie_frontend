@@ -77,7 +77,7 @@ class WordList extends Component {
     .then(resp => resp.json())
     .then(data => {
       // console.log(data);
-      this.props.history.push(`/users/${this.props.currentUser}/poems`)
+      this.props.history.push(`/users/${this.props.currentUser.id}/poems`)
       }
     )
   }

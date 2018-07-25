@@ -29,7 +29,7 @@ class UsersContainer extends Component {
     .then(data => {
       this.setState({
         users: data
-      })
+      }, () => console.log(this.state.users))
     })
   }
 
@@ -58,9 +58,34 @@ class UsersContainer extends Component {
     })
   }
 
+  unFollow = (id) => {
+    console.log('inside unFollow', id)
+    let body = {
+      follower_id: localStorage.id,
+      followed_id: id
+    }
+
+    let config = {
+      method: "DELETE",
+      headers:{"Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+      },
+      body: JSON.stringify(body)
+    }
+
+    fetch('http://localhost:4000/relationships', config)
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        users: data
+      })
+    })
+
+  }
+
   render() {
     let userComponents = this.state.users.map(u => {
-      return <User history = {this.props.history} handleFollow={this.handleFollow} followers={u.followers} following={u.following} key={u.id} id={u.id} name={u.display_name} bio={u.bio} hometown={u.hometown} />
+      return <User user = {u} history = {this.props.history} unFollow={this.unFollow} handleFollow={this.handleFollow} followers={u.followers} following={u.following} key={u.id} id={u.id} name={u.display_name} bio={u.bio} hometown={u.hometown} />
     })
     return (
       <Fragment>

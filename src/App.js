@@ -17,8 +17,8 @@ class App extends Component {
 
   componentDidMount() {
     if (localStorage.token) {
-      console.log('it has a token!')
-      console.log('id inside app', localStorage.id)
+      // console.log('it has a token!')
+      // console.log('id inside app', localStorage.id)
       let config = {
         method: "GET",
         headers: {
@@ -28,10 +28,11 @@ class App extends Component {
       }
       fetch(`http://localhost:4000/users/${localStorage.id}`, config)
       .then(resp => resp.json())
-      .then(data => this.props.setUser(data.id))
+      .then(data => this.props.setUser(data))
     } else {
       console.log('no token!')
     }
+
   }
 
   render() {

@@ -15,7 +15,6 @@ class OtherUserProfile extends Component {
 
   componentDidMount() {
     let id = this.props.id
-
     let config = {
       method: "GET",
       headers: {"Content-Type": "application/json",

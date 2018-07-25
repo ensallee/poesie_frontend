@@ -6,6 +6,7 @@ import LogoutButton from './LogoutButton'
 import { connect } from 'react-redux'
 
 const NavBar = (props) => {
+  // console.log('props inside NavBar', props)
   return (
     <Menu secondary size='massive'>
       <Menu.Item
@@ -17,7 +18,7 @@ const NavBar = (props) => {
           <Fragment>
             <Menu.Item
               as={NavLink}
-              exact to={`/users/${props.currentUser}/poems`}
+              exact to={`/users/${localStorage.id}/poems`}
               name='MyPoems'
             />
             <Menu.Item

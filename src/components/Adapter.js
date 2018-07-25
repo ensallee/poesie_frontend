@@ -16,12 +16,6 @@ class Adapter {
     .then(resp=> resp.json())
   }
 
-//there's something wrong with this one.
-  // static getArticles = () => {
-  //   return fetch(`https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=article&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=12&limit=5&api_key=${env.app_key}`)
-  //   .then(resp=> resp.json())
-  // }
-
   static getPrepositions = () => {
     return fetch(`https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=preposition&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=12&limit=10&api_key=${env.app_key}`)
     .then(resp=> resp.json())

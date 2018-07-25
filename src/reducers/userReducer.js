@@ -2,7 +2,8 @@ import {SET_USER} from '../actions';
 
 //I think the reason I'm no longer able to see the profile page after making a change to atom is that currentUser gets set back to an empty object each time.
 const initialState = {
-  currentUser: {}
+  currentUser: {},
+  loading: true
 }
 
 //this was my attempt before talking to Eelan
@@ -33,9 +34,9 @@ const initialState = {
 export default function reducer(state = initialState, action) {
     switch(action.type) {
       case SET_USER:
-      console.log('action.payload inside user reducer', action.payload)
+      // console.log('action.payload inside user reducer', action.payload)
         let currentUser = action.payload
-        return {...state, currentUser}
+        return {...state, currentUser, loading: false}
       default:
         return state;
     }

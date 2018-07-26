@@ -19,6 +19,7 @@ const NavBar = (props) => {
         <Nav>
           <NavItem href={`/users/${localStorage.id}/poems`}>My Poems</NavItem>
           <NavItem href='/users'>Community</NavItem>
+          <NavItem href='/poems'>Explore</NavItem>
         </Nav>
         <Nav pullRight>
           <LogoutButton />

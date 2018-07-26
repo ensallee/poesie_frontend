@@ -12,13 +12,13 @@ class Follower extends Component {
 //again, I had to user localStorage.id here instead of using the current user in the store
   render() {
     return (
-      <Card>
-        <Card.Content onClick={this.handleClick}>
-          <Card.Header>{this.props.name}</Card.Header>
+      <Card className="user-card font">
+        <Card.Content className="font" onClick={this.handleClick}>
+          <Card.Header className="font">{this.props.name}</Card.Header>
           <Card.Meta>
-            <span className='date'>{this.props.hometown}</span>
+            <span className='font date'>{this.props.hometown}</span>
           </Card.Meta>
-          <Card.Description>{this.props.bio}</Card.Description>
+          <Card.Description className="font">{this.props.bio}</Card.Description>
         </Card.Content>
       </Card>
     )

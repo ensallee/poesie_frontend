@@ -20,7 +20,7 @@ class User extends Component {
   render() {
     console.log('props inside profile', this.props)
     return (
-      <Card style={{fontFamily: "Open Sans, sans-serif"}}>
+      <Card className="user-card font">
         <Card.Content onClick={this.handleClick}>
           <Card.Header style={{fontFamily: "Open Sans, sans-serif"}}>{this.props.name}</Card.Header>
           <Card.Meta>

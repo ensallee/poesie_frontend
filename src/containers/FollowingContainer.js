@@ -43,10 +43,12 @@ class FollowingContainer extends Component {
     return (
       <Fragment>
         <NavBar3 />
-        <h3>{this.state.displayName}'s Followed</h3>
-        <Card.Group centered itemsPerRow={4}>
-          {followingComponents.length !==0 ? <Fragment>{followingComponents}</Fragment> : <Fragment><br></br><br></br><h4>{this.state.displayName} doesn't follow anyone yet.</h4></Fragment>}{followingComponents}
-        </Card.Group>
+        <div className="users-container">
+          <h3>{this.state.displayName}'s Followed</h3>
+          <Card.Group centered itemsPerRow={4}>
+            {followingComponents.length !==0 ? <Fragment>{followingComponents}</Fragment> : <Fragment><br></br><br></br><h4>{this.state.displayName} doesn't follow anyone yet.</h4></Fragment>}{followingComponents}
+          </Card.Group>
+        </div>
       </Fragment>
     )
   }

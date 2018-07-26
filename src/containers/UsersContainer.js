@@ -57,10 +57,12 @@ class UsersContainer extends Component {
     return (
       <Fragment>
         <NavBar3 />
+        <div className="users-container">
         <h1>All Poets</h1>
           <Card.Group centered itemsPerRow={4}>
             {userComponents}
           </Card.Group>
+        </div>
       </Fragment>
     )
   }

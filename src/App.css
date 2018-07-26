@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  margin: 3px;
 }
 
 /*for first page */
@@ -160,6 +159,7 @@
   height: 600px;
 }
 
+/* I didn't end up using writing area */
 #writing-area {
   border: 2px solid black;
   min-height: 600px;
@@ -348,11 +348,28 @@
 } */
 
 .font {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", sans-serif !important;
 }
 
 .form {
   margin: 0 auto;
   padding: 20px;
   max-width: 600px;
+}
+
+.users-container{
+  margin: 3px;
+}
+
+.user-card{
+  border: 1px solid white !important;
+}
+
+.user-card:hover {
+  border: 1px solid rgba(74, 104, 114, .5) !important;
+}
+
+/* this is the arrow in the carousel */
+.glyphicon {
+  color: rgba(74, 104, 114, .5)
 }

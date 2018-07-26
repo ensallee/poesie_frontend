@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { setUser, setAllUsers } from './actions';
 import FollowersContainer from './containers/FollowersContainer';
 import FollowingContainer from './containers/FollowingContainer';
+import PoemsContainer from './containers/PoemsContainer'
 
 class App extends Component {
 
@@ -66,6 +67,7 @@ class App extends Component {
               <Route exact path="/users/:id/followers" component={(props) => <FollowersContainer {...props} />} />
               <Route exact path="/users/:id/following" component={(props) => <FollowingContainer {...props} />} />
               <Route exact path="/users" component={(props) => <UsersContainer {...props} />} />
+              <Route exact path="/poems" component={(props) => <PoemsContainer {...props} />} />
             </Fragment>
             :
             <Fragment>

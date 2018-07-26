@@ -2,36 +2,38 @@ import React, { Component, Fragment } from 'react';
 import NavBar3 from '../components/NavBar3'
 import User from '../components/User'
 import { Card } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { setAllUsers } from '../actions';
 
 class UsersContainer extends Component {
-  constructor(props){
-    super(props)
+  // constructor(props){
+  //   super(props)
+  //
+  //   this.state={
+  //     users: []
+  //   }
+  // }
 
-    this.state={
-      users: []
-    }
-  }
+  // componentDidMount() {
+  //   // this.getUsers()
+  // }
 
-  componentDidMount() {
-    this.getUsers()
-  }
-
-  getUsers() {
-    let config = {
-      method: 'GET',
-      headers: {"Content-Type": "application/json",
-                "Authorization": localStorage.getItem('token')
-      }
-    }
-
-    fetch('http://localhost:4000/users', config)
-    .then(resp => resp.json())
-    .then(data => {
-      this.setState({
-        users: data
-      }, () => console.log(this.state.users))
-    })
-  }
+  // getUsers() {
+  //   let config = {
+  //     method: 'GET',
+  //     headers: {"Content-Type": "application/json",
+  //               "Authorization": localStorage.getItem('token')
+  //     }
+  //   }
+  //
+  //   fetch('http://localhost:4000/users', config)
+  //   .then(resp => resp.json())
+  //   .then(data => {
+  //     this.setState({
+  //       users: data
+  //     }, () => console.log(this.state.users))
+  //   })
+  // }
 
   handleFollow = (id) => {
     console.log('inside handleFollow', id)
@@ -52,9 +54,7 @@ class UsersContainer extends Component {
     fetch('http://localhost:4000/relationships', config)
     .then(resp => resp.json())
     .then(data => {
-      this.setState({
-        users: data
-      })
+      this.props.setAllUsers(data)
     })
   }
 
@@ -76,14 +76,12 @@ class UsersContainer extends Component {
     fetch('http://localhost:4000/relationships', config)
     .then(resp => resp.json())
     .then(data => {
-      this.setState({
-        users: data
-      })
+      this.props.setAllUsers(data)
     })
   }
 
   render() {
-    let userComponents = this.state.users.map(u => {
+    let userComponents = this.props.users.map(u => {
       return <User user = {u} history = {this.props.history} unFollow={this.unFollow} handleFollow={this.handleFollow} followers={u.followers} following={u.following} key={u.id} id={u.id} name={u.display_name} bio={u.bio} hometown={u.hometown} />
     })
     return (
@@ -98,4 +96,16 @@ class UsersContainer extends Component {
   }
 }
 
-export default UsersContainer;
+const mapStateToProps = (state) => {
+  return {
+    users: state.currentUser.users
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setAllUsers: (users) => dispatch(setAllUsers(users))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);

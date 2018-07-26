@@ -9,7 +9,7 @@ import LogInForm from './components/LogInForm';
 import MyPoems from './components/MyPoems';
 import Adapter from './components/Adapter';
 import { connect } from 'react-redux';
-import { setUser } from './actions';
+import { setUser, setAllUsers } from './actions';
 import FollowersContainer from './containers/FollowersContainer';
 import FollowingContainer from './containers/FollowingContainer';
 
@@ -17,23 +17,42 @@ class App extends Component {
 
   componentDidMount() {
     if (localStorage.token) {
-      // console.log('it has a token!')
-      // console.log('id inside app', localStorage.id)
-      let config = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": localStorage.getItem('token')
-        }
-      }
-      fetch(`http://localhost:4000/users/${localStorage.id}`, config)
-      .then(resp => resp.json())
-      .then(data => this.props.setUser(data))
+      this.getUsers()
+      this.setUser()
     } else {
       console.log('no token!')
     }
-
   }
+
+  getUsers() {
+    let config = {
+      method: 'GET',
+      headers: {"Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+      }
+    }
+
+    fetch('http://localhost:4000/users', config)
+    .then(resp => resp.json())
+    .then(data => {
+      this.props.setAllUsers(data)
+    })
+  }
+
+  setUser() {
+    let config = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem('token')
+      }
+    }
+    fetch(`http://localhost:4000/users/${localStorage.id}`, config)
+    .then(resp => resp.json())
+    .then(data => this.props.setUser(data))
+  }
+
+
 
   render() {
     return (
@@ -62,7 +81,8 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setUser: (userInfo) => dispatch(setUser(userInfo))
+    setUser: (userInfo) => dispatch(setUser(userInfo)),
+    setAllUsers: (users) => dispatch(setAllUsers(users))
   }
 }
 

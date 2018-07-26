@@ -6,9 +6,17 @@ export const UPDATE_PREPOSITIONS = "UPDATE_PREPOSITIONS"
 export const UPDATE_ADVERBS = "UPDATE_ADVERBS"
 export const UPDATE_OTHERS = "UPDATE_OTHERS"
 export const SET_USER = "SET_USER"
+export const SET_ALL_USERS = "SET_ALL_USERS"
 
 export function getWords(){
   return ({type: GET_WORDS});
+}
+
+export function setAllUsers(users) {
+  return {
+    type: SET_ALL_USERS,
+    payload: users
+  }
 }
 
 export function setUser(user) {

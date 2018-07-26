@@ -80,7 +80,6 @@ class UsersContainer extends Component {
         users: data
       })
     })
-
   }
 
   render() {

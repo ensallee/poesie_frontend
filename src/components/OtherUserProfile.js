@@ -4,37 +4,61 @@ import { setAllUsers } from '../actions';
 import { NavLink } from 'react-router-dom';
 
 class OtherUserProfile extends Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-      user: ''
+  toggleButton(user) {
+    if (user.followers.find(u => u.id == localStorage.id)) {
+      return <button onClick={() => this.unFollow(this.props.id)} className="follow-button">Unfollow</button>
+    } else {
+      return <button onClick={() => this.handleFollow(this.props.id)} className="follow-button">Follow</button>
     }
   }
 
-  componentDidMount() {
-    // let id = this.props.id
-    // let config = {
-    //   method: "GET",
-    //   headers: {"Content-Type": "application/json",
-    //       "Authorization": localStorage.getItem('token')
-    //     }
-    // }
-    //
-    // fetch(`http://localhost:4000/users/${id}`, config)
-    // .then(resp => resp.json())
-    // .then(data => {
-    //   this.setState({
-    //     user: data
-    //   }, () => console.log('state on otheruserprofile after settting state', this.state))
-    // })
-    // console.log('this.props.users inside component did mount', this.props.users)
-    // console.log('this.props.id inside component did mount', this.props.id)
-    // console.log('finding user inside other user profile', this.props.users.find(u => u.id == this.props.id))
+  handleFollow = (id) => {
+    console.log('inside handleFollow', id)
+
+    let body = {
+      follower_id: localStorage.id,
+      followed_id: id
+    }
+
+    let config = {
+      method: "POST",
+      headers:{"Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+      },
+      body: JSON.stringify(body)
+    }
+
+    fetch('http://localhost:4000/relationships', config)
+    .then(resp => resp.json())
+    .then(data => {
+      this.props.setAllUsers(data)
+    })
+  }
+
+  unFollow = (id) => {
+    console.log('inside unFollow', id)
+    let body = {
+      follower_id: localStorage.id,
+      followed_id: id
+    }
+
+    let config = {
+      method: "DELETE",
+      headers:{"Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+      },
+      body: JSON.stringify(body)
+    }
+
+    fetch('http://localhost:4000/relationships', config)
+    .then(resp => resp.json())
+    .then(data => {
+      this.props.setAllUsers(data)
+    })
   }
 
   render() {
-    // console.log('props inside other user profile', this.props)
     let user = this.props.users.find(u => u.id == this.props.id)
     console.log('user', user)
     return (
@@ -48,6 +72,7 @@ class OtherUserProfile extends Component {
             <br></br>
             <br></br>
           <p><NavLink exact to={`/users/${this.props.id}/following`}> {user.following.length} Following </NavLink> | <NavLink exact to={`/users/${this.props.id}/followers`}> {user.followers.length} Followers</NavLink></p>
+          {this.toggleButton(user)}
           </p>
           : <h6>Loading...</h6>}
         </div>

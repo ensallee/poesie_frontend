@@ -49,9 +49,9 @@ class Profile extends Component {
       <Fragment>
         <div className="user-details">
           <p>
-          <h1>Name: {this.state.displayName}</h1>
-          <h4>Location: {this.state.hometown}</h4>
-          <h4>Bio: {this.state.bio}</h4>
+          <h1>{this.state.displayName}</h1>
+          <h4>{this.state.hometown}</h4>
+          <h4>{this.state.bio}</h4>
           <br></br>
           <br></br>
           <p><NavLink exact to={`/users/${this.state.id}/following`}> {this.state.following.length} Following </NavLink> | <NavLink exact to={`/users/${this.state.id}/followers`}> {this.state.followers.length} Followers</NavLink></p>

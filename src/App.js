@@ -4,8 +4,8 @@ import WritingContainer from './containers/WritingContainer';
 import UsersContainer from './containers/UsersContainer'
 import './App.css';
 import Home from './components/Home';
-import RegistrationForm from './components/RegistrationForm';
-import LogInForm from './components/LogInForm';
+import RegistrationForm2 from './components/RegistrationForm2';
+import LogInForm2 from './components/LogInForm2';
 import MyPoems from './components/MyPoems';
 import Adapter from './components/Adapter';
 import { connect } from 'react-redux';
@@ -69,8 +69,8 @@ class App extends Component {
             </Fragment>
             :
             <Fragment>
-              <Route exact path="/register" component={(props) => <RegistrationForm {...props} />} />
-              <Route exact path="/login" component={(props) => <LogInForm {...props} />} />
+              <Route exact path="/register" component={(props) => <RegistrationForm2 {...props} />} />
+              <Route exact path="/login" component={(props) => <LogInForm2 {...props} />} />
             </Fragment>
           }
         </Switch>

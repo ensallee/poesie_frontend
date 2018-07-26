@@ -66,9 +66,9 @@ class OtherUserProfile extends Component {
         <div className="user-details">
           {user !== undefined ?
           <p>
-          <h1>Name: {user.display_name}</h1>
-          <h4>Location: {user.hometown}</h4>
-          <h4>Bio: {user.bio} </h4>
+          <h1>{user.display_name}</h1>
+          <h4>{user.hometown}</h4>
+          <h4>{user.bio} </h4>
             <br></br>
             <br></br>
           <p><NavLink exact to={`/users/${this.props.id}/following`}> {user.following.length} Following </NavLink> | <NavLink exact to={`/users/${this.props.id}/followers`}> {user.followers.length} Followers</NavLink></p>

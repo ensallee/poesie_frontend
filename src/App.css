@@ -250,6 +250,8 @@
 
 /*an attempt to center content inside profile component vertically*/
 .user-details p {
+  max-width: 400px;
+  min-width: 400px;
   position: relative;
   top: 50%;
   transform: perspective(1px) translateY(-50%);
@@ -347,4 +349,10 @@
 
 .font {
   font-family: "Open Sans", sans-serif;
+}
+
+.form {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 600px;
 }

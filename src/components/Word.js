@@ -3,41 +3,25 @@ import Draggable from 'react-draggable'
 import Adapter from './Adapter'
 
 class Word extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state={
-       activeDrags: 0,
-       // sourceList: //this points to wordList in mike's code, not sure what to do here because there are so many keys in this.state.
-       // destlist: [],
-       //mike has a sourceArea and a destArea
-       // controlledPosition: {
-       //  x: 0, y: 0
-      // }
-    }
-  }
 
   onStart(e) {
     e.preventDefault()
-    let word = e.target
-    console.log('word inside onStart', word)
-    let randColor = Adapter.getRandomColor()
-    word.style.cssText= `border-color: ${randColor}; color: ${randColor};`
+    //this creates weird behavior
+    // let word = e.target
+    // let randColor = Adapter.getRandomColor()
+    // word.style.cssText= `border-color: ${randColor}; color: ${randColor};`
   }
 
   onStop(e:MouseEvent, data: Object, id) {
     e.preventDefault()
-    let word = e.target
-    console.log('word inside of stopMoving', word)
-    word.style.color="black"
-    word.style.borderColor="black"
+    //this creates weird behavior if you try to pick it back up after dropping it.
+    // let word = e.target
+    // word.style.color="black"
+    // word.style.borderColor="black"
   }
 
   handleDoubleClick(e) {
-    // console.log('inside handleDoubleClick')
-    // console.log('event target inside doubleclick', e.target)
     let el = e.target
-    // console.log('el after I grabbed it', el)
     el.classList.add('hidden')
   }
 
@@ -53,9 +37,4 @@ class Word extends Component {
   }
 }
 
-export default Word
-
-//bounds will fix my container issue, right? Why isn't what I have working?
-//THINGS I DELETED FROM RENDER:
-// defaultPosition={{x: 0, y: 0}}
-// grid={[25, 25]}
+export default Word;

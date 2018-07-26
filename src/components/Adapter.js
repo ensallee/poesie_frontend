@@ -31,7 +31,8 @@ class Adapter {
   }
 
   static logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('token')
+    localStorage.removeItem('id');
   }
 
   static getRandomColor() {

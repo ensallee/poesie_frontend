@@ -6,8 +6,7 @@ import { setUser } from '../actions';
 class Login extends Component {
   state = {
     username: "",
-    password: "",
-    currentUser: {}
+    password: ""
   }
 
   handleChange = (event) => {
@@ -18,10 +17,6 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // console.log('state inside login', this.state)
-    // this.props.setUser(this.state);
-    // this.props.history.push("/write"); //I commented this out because of async issues with my original approach
-    //
     fetch(`http://localhost:4000/sessions/`, {
       method: 'POST',
       headers: {
@@ -31,15 +26,12 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        // console.log('json inside login before setting state', json)
         localStorage.setItem('token', json.token);
-        //is this okay?
+        //I had to save id to local storage because of the refresh issue with current user that I have throughout this app. I use localStorage.id throughout, rather than the currentUser inside state.
         localStorage.setItem('id', json.id);
-        //try to get rid of set state and just go into reducer with json.id
           this.props.setUser(json);
           this.props.history.push("/write");
         })
-      // })
   }
 
   render() {

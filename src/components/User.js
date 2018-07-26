@@ -10,27 +10,25 @@ class User extends Component {
 
   toggleButton(user) {
     if (user.followers.find(u => u.id == localStorage.id)) {
-      return <button onClick={() => this.props.unFollow(this.props.id)} className="follow-button">Unfollow</button>
+      return <button className="unfollow-button" onClick={() => this.props.unFollow(this.props.id)}>Unfollow</button>
     } else {
-      return <button onClick={() => this.props.handleFollow(this.props.id)} className="follow-button">Follow</button>
+      return <button className="follow-button" onClick={() => this.props.handleFollow(this.props.id)}>Follow</button>
     }
   }
-
-
 
 //again, I had to user localStorage.id here instead of using the current user in the store
   render() {
     console.log('props inside profile', this.props)
     return (
-      <Card>
+      <Card style={{fontFamily: "Open Sans, sans-serif"}}>
         <Card.Content onClick={this.handleClick}>
-          <Card.Header>{this.props.name}</Card.Header>
+          <Card.Header style={{fontFamily: "Open Sans, sans-serif"}}>{this.props.name}</Card.Header>
           <Card.Meta>
-            <span className='date'>{this.props.hometown}</span>
+            <span className='date font'>{this.props.hometown}</span>
           </Card.Meta>
-          <Card.Description>{this.props.bio}</Card.Description>
+          <Card.Description className='font'>{this.props.bio}</Card.Description>
         </Card.Content>
-        <Card.Content extra>
+        <Card.Content className="font" extra>
             <Icon name='user' />
             {this.props.followers.length} Followers | {this.props.following.length} Following
             <br></br>
@@ -50,6 +48,7 @@ const mapStateToProps = (state) => {
   }
 }
 
+//this is what I would use if my users had images.
 // <Image src='/images/avatar/large/matthew.png' />
 
 export default connect(mapStateToProps)(User);

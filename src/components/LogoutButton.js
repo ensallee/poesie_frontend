@@ -1,7 +1,6 @@
 import React from 'react';
 import Adapter from './Adapter';
 import { withRouter } from 'react-router';
-// import { Button } from 'semantic-ui-react';
 import { Button } from "react-bootstrap";
 
 const LogoutButton = ({ to = "/", history }) => {

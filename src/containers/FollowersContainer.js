@@ -43,7 +43,7 @@ class FollowersContainer extends Component {
         <NavBar3 />
         <h3>{this.state.displayName}'s Followers</h3>
         <Card.Group centered itemsPerRow={4}>
-          {followerComponents}
+          {followerComponents.length !==0 ? <Fragment>{followerComponents}</Fragment> : <Fragment><br></br><br></br><h4>{this.state.displayName} doesn't have any followers yet.</h4></Fragment>}
         </Card.Group>
       </Fragment>
     )

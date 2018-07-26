@@ -18,7 +18,6 @@ class Profile extends Component {
   }
 
   componentDidMount = () => {
-    // console.log('props inside currentUser', this.props.currentUser
     let config = {
       method: "GET",
       headers: {"Content-Type": "application/json",
@@ -26,7 +25,7 @@ class Profile extends Component {
         }
     }
     // fetch(`http://localhost:4000/users/${this.props.currentUser}`, config)
-    //again, this.props.currentUser worked at first, but on refresh, it's an empty object so I had to user localStorage. WHY?!
+    //again, this.props.currentUser worked at first, but on refresh, it's an empty object so I had to user localStorage.
     fetch(`http://localhost:4000/users/${localStorage.id}`, config)
     .then(resp => resp.json())
     .then(data => {
@@ -61,10 +60,9 @@ class Profile extends Component {
       </Fragment>
     )
   }
-
-
 }
 
+//this isn't doing anything for me becuase I had to use localStorage to do my fetch
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser.currentUser,

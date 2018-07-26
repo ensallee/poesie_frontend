@@ -1,3 +1,5 @@
+//this was my attempt at a second custom nav bar, but I moved away from it b/c navlinks don't respond to hover events. I tried importing Radium, to no avail.
+
 import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './LogoutButton'

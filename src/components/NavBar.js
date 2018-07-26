@@ -1,3 +1,5 @@
+//this was my first navbar that I swapped out
+
 import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react'

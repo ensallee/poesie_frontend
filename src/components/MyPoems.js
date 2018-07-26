@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
-// import Poem from './Poem';
 import NavBar3 from './NavBar3'
 import ReactDOM from 'react-dom';
-// import { Carousel } from 'react-responsive-carousel';
 import { Carousel } from 'react-bootstrap';
 import Profile from './Profile';
 import { connect } from 'react-redux';
@@ -48,8 +46,6 @@ class MyPoems extends Component {
   }
 
   handleDelete(id) {
-    // console.log('inside delete')
-    // console.log('id', id)
     let config = {
       method: "DELETE",
       headers: {"Content-Type": "application/json",
@@ -88,7 +84,7 @@ class MyPoems extends Component {
         <Carousel.Item key={uuid()}>
           <img width={900} height={500} alt="900x500" src={poem.url} />
             {this.props.location.pathname.split('/')[2] === localStorage.id ? <button className="delete-button" onClick={() => this.handleDelete(poem.id)}>Delete</button> : null}
-            <button className="like-button" onClick={() => this.handleLike(poem.id, poem.likes_count)}>{poem.likes_count} Likes</button>
+            {poem.likes_count > 1 ? <button className="like-button" onClick={() => this.handleLike(poem.id, poem.likes_count)}>{poem.likes_count} Likes</button> : <button className="like-button" onClick={() => this.handleLike(poem.id, poem.likes_count)}>{poem.likes_count} Like</button> }
         </Carousel.Item>
       )
     })
@@ -108,12 +104,12 @@ class MyPoems extends Component {
   }
 }
 
+//this isn't doing anything for me becasue I had to use localstorage.id to get the current user instead of the store because it resets to an empty object on refresh.
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser.currentUser,
   }
 }
 
-//pulling params out of route: location.url--ask JON.
 
 export default connect(mapStateToProps)(MyPoems);

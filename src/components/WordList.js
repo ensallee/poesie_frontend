@@ -46,13 +46,11 @@ class WordList extends Component {
         array[j] = x;
     }
     return array;
-}
+  }
 
   savePoem = (e) => {
     let wordListDiv = document.getElementById('word-list')
     html2canvas(wordListDiv).then((canvas) => {
-      //not sure I need the line that's creating a new image.
-      // var image = new Image()
       let src = canvas.toDataURL("image/png")
       this.postPoem(src)
     })
@@ -76,7 +74,6 @@ class WordList extends Component {
     fetch('http://localhost:4000/poems/', config)
     .then(resp => resp.json())
     .then(data => {
-      // console.log(data);
       this.props.history.push(`/users/${this.props.currentUser.id}/poems`)
       }
     )

@@ -6,35 +6,6 @@ import { connect } from 'react-redux'
 import { setAllUsers } from '../actions';
 
 class UsersContainer extends Component {
-  // constructor(props){
-  //   super(props)
-  //
-  //   this.state={
-  //     users: []
-  //   }
-  // }
-
-  // componentDidMount() {
-  //   // this.getUsers()
-  // }
-
-  // getUsers() {
-  //   let config = {
-  //     method: 'GET',
-  //     headers: {"Content-Type": "application/json",
-  //               "Authorization": localStorage.getItem('token')
-  //     }
-  //   }
-  //
-  //   fetch('http://localhost:4000/users', config)
-  //   .then(resp => resp.json())
-  //   .then(data => {
-  //     this.setState({
-  //       users: data
-  //     }, () => console.log(this.state.users))
-  //   })
-  // }
-
   handleFollow = (id) => {
     console.log('inside handleFollow', id)
 
@@ -59,7 +30,6 @@ class UsersContainer extends Component {
   }
 
   unFollow = (id) => {
-    console.log('inside unFollow', id)
     let body = {
       follower_id: localStorage.id,
       followed_id: id

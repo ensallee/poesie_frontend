@@ -9,8 +9,7 @@ class Register extends Component {
     password: "",
     display_name: "",
     hometown: "",
-    bio: "",
-    currentUser: ""
+    bio: ""
   }
 
   handleChange = (event) => {
@@ -33,7 +32,8 @@ class Register extends Component {
       .then(json => {
         console.log('json after registering', json);
         localStorage.setItem('token', json.token);
-        this.props.setUser(this.state.currentUser);
+        localStorage.setItem('id', json.id)
+        this.props.setUser(json);
         this.props.history.push("/write");
       })
   }

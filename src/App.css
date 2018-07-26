@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  margin: 3px;
 }
 
 /*for first page */
@@ -16,7 +18,7 @@
     text-align: center;
 
     /* Background styles */
-    background-image: url(./images/bogomil-mihaylov-519194-unsplash.jpg);
+    background-image: url(./images/bogomil-mihaylov-519194-unsplash.png);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -155,7 +157,7 @@
   margin: 0 auto;
   flex: 1;
   width: 900px;
-  height: 500px;
+  height: 600px;
 }
 
 #writing-area {
@@ -173,6 +175,8 @@
   padding: 2px;
   display: inline-block;
   margin: 1px;
+  font-family: serif;
+  font-size: 16px;
   /* font-family: 'Nixie One', cursive;
   font-weight: bold;
   letter-spacing: .10rem; */
@@ -187,6 +191,7 @@
   display: none;
 }
 
+/* what is this? */
 .main-buttons {
   margin: 5px;
   color: blue;
@@ -204,11 +209,6 @@
   background: none !important;
 }
 
-/*attempting to get delete button to float to the side of the poem container*/
-/* .carousel-caption {
-  width: 100% !important;
-} */
-
 .delete-button {
   color: black;
   margin-top: 8px;
@@ -217,11 +217,27 @@
   border-radius: 5px;
 }
 
+.delete-button:hover {
+  color: black;
+  margin-top: 8px;
+  margin-right: 2px;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+}
+
 .like-button {
   color: black;
   margin-top: 8px;
   margin-left: 2px;
   background-color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.like-button:hover {
+  color: black;
+  margin-top: 8px;
+  margin-left: 2px;
+  background-color: rgba(74, 104, 114, .5);
   border-radius: 5px;
 }
 
@@ -241,7 +257,7 @@
 
 .title {
   font-family:'Cedarville Cursive', cursive;
-  font-size: 50px;
+  font-size: 80px;
 }
 
 .main-button {
@@ -251,9 +267,43 @@
   padding: 5px;
 }
 
+.main-button:hover {
+  margin: 5px;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .follow-button {
   display: block;
   margin: 0 auto;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.unfollow-button {
+  display: block;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.follow-button:hover {
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.unfollow-button:hover {
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .logout-button {
@@ -262,9 +312,6 @@
   transform: perspective(1px) translateY(25%);
 }
 
-.navbar-collapse {
-  color: white !important
-}
 
 /* this is all code for my custom nav bar */
 /* .second-nav-bar {
@@ -297,3 +344,7 @@
   top:0;
   width:100%;
 } */
+
+.font {
+  font-family: "Open Sans", sans-serif;
+}

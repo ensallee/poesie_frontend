@@ -8,27 +8,6 @@ import NavBar3 from '../components/NavBar3'
 
 class WritingContainer extends Component {
 
-  //this will need a state of sourceArea and destArea, pointing to the values in console.log below.
-
-
-  componentDidMount() {
-    // console.log(this.dest, this.source);
-    // console.log(this.refs.source.getBoundingClientRect())
-    //I commented out the below two lines because I was attempting the single div with canvas approach
-    // console.log(this.source.refs.area.getBoundingClientRect())
-    // console.log(this.dest.refs.area.getBoundingClientRect())
-
-    // this.setState({
-    //   sourceArea: this.refs.source.getBoundingClientRect()
-    // })
-    // console.log('props inside writing container', this.props)
-  }
-
-
-  //I commented these out on Sat July 21 when beginning the canvas approach and wanted to get rid of divs.
-  // <WritingArea ref={ref => this.dest = ref}/>
-  //<WordList ref={connectedComponent => this.source = connectedComponent.getWrappedInstance()} />
-
   render() {
     return (
       <React.Fragment>

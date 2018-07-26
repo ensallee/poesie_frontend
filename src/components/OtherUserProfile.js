@@ -81,7 +81,7 @@ class OtherUserProfile extends Component {
   }
 }
 
-//the reason I'm using currentUser.users is bc that's how I defined it in the combinereducers, even though now it holds current user and all users
+//the reason I'm using currentUser.users is bc that's how I defined it in the combinereducers (inside reducers/index.js), even though now it holds current user AND all users
 const mapStateToProps = (state) => {
   return {
     users: state.currentUser.users

@@ -1,11 +1,11 @@
+//I had to use following and followers instead of users for following container and followers container b/c for some reason, the fetch for an individual user doesn't return who that particular user is following and followed by.
+
 import React, { Component, Fragment } from 'react';
 import { Card, Icon } from 'semantic-ui-react'
-// import { withRouter } from 'react-router';
 
 class Following extends Component {
 
   handleClick = () =>  {
-    // console.log('inside handle click of User')
     this.props.history.push(`/users/${this.props.id}/poems`)
   }
 
@@ -25,6 +25,7 @@ class Following extends Component {
   }
 }
 
+//this is what I would use for images if I enabled users to upload photos on register.
 // <Image src='/images/avatar/large/matthew.png' />
 
 export default Following;

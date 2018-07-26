@@ -16,7 +16,7 @@
     text-align: center;
 
     /* Background styles */
-    background-image: url(./images/anastasia-dulgier-675630-unsplash.jpg);
+    background-image: url(./images/bogomil-mihaylov-519194-unsplash.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -25,8 +25,8 @@
 
 /*for first page */
 .hero-inner {
-  width: 50%;
-  background: white;
+  width: 40%;
+  /* background: white; */
   padding: 30px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
@@ -92,7 +92,7 @@
 
 .hero-button {
   display: block;
-  width: 200px;
+  width: 150px;
 
   /* Padding and margins */
   padding: .5em;
@@ -104,16 +104,21 @@
   color: black;
   text-decoration: none;
   font-size: 1.5em;
+  font-family: 'Nixie One', cursive;
+  letter-spacing: .10rem;
+
+  /*Background Color */
+  background: rgba(255, 255, 255, 0.4);
 
 
   /* Border styles */
-  border: 3px solid black;
+  border: 1px solid black;
   border-radius: 20px;
 }
 
 .hero-button:hover {
   display: block;
-  width: 200px;
+  width: 150px;
 
   /* Padding and margins */
   padding: .5em;
@@ -122,13 +127,15 @@
   margin-right: auto;
 
   /* Text styles */
-  color: rgb(4, 102, 179);
+  color: rgb(74, 104, 114);
   text-decoration: none;
   font-size: 1.5em;
+  font-family: 'Nixie One', cursive;
+  letter-spacing: .10rem;
 
 
   /* Border styles */
-  border: 3px solid rgb(4, 102, 179);
+  border: 1px solid rgb(74, 104, 114);
   border-radius: 20px;
 }
 
@@ -166,6 +173,9 @@
   padding: 2px;
   display: inline-block;
   margin: 1px;
+  /* font-family: 'Nixie One', cursive;
+  font-weight: bold;
+  letter-spacing: .10rem; */
 }
 
 .writing-container {
@@ -222,7 +232,7 @@
   background-color: #FFFFFF;
 }
 
-/*an attempt to center content vertically*/
+/*an attempt to center content inside profile component vertically*/
 .user-details p {
   position: relative;
   top: 50%;
@@ -245,3 +255,45 @@
   display: block;
   margin: 0 auto;
 }
+
+.logout-button {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(25%);
+}
+
+.navbar-collapse {
+  color: white !important
+}
+
+/* this is all code for my custom nav bar */
+/* .second-nav-bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar-item {
+  display: inline;
+  padding: 8px;
+}
+
+.nav-bar-item:hover {
+  text-decoration: none;
+  display: inline;
+  padding: 8px;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.nav-bar-container {
+  position:fixed;
+  top:0;
+  width:100%;
+} */

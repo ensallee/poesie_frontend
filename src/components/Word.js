@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable'
+import Adapter from './Adapter'
 
 class Word extends Component {
   constructor(props) {
@@ -18,11 +19,18 @@ class Word extends Component {
 
   onStart(e) {
     e.preventDefault()
+    let word = e.target
+    console.log('word inside onStart', word)
+    let randColor = Adapter.getRandomColor()
+    word.style.cssText= `border-color: ${randColor}; color: ${randColor};`
   }
 
   onStop(e:MouseEvent, data: Object, id) {
-    // console.log('Event: ', e)
-    // console.log('data: ', data)
+    e.preventDefault()
+    let word = e.target
+    console.log('word inside of stopMoving', word)
+    word.style.color="black"
+    word.style.borderColor="black"
   }
 
   handleDoubleClick(e) {

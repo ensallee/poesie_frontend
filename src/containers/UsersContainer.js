@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import NavBar from '../components/NavBar'
+import NavBar3 from '../components/NavBar3'
 import User from '../components/User'
 import { Card } from 'semantic-ui-react'
 
@@ -89,7 +89,7 @@ class UsersContainer extends Component {
     })
     return (
       <Fragment>
-        <NavBar />
+        <NavBar3 />
         <h1>All Poets</h1>
           <Card.Group centered itemsPerRow={4}>
             {userComponents}

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import NavBar from '../components/NavBar'
+import NavBar3 from '../components/NavBar3'
 import User from '../components/User'
 import { Card } from 'semantic-ui-react'
 import Following from '../components/Following'
@@ -42,7 +42,7 @@ class FollowingContainer extends Component {
     })
     return (
       <Fragment>
-        <NavBar />
+        <NavBar3 />
         <h3>{this.state.displayName}'s Followed</h3>
         <Card.Group centered itemsPerRow={4}>
           {followingComponents}

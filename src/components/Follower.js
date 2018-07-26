@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Card, Icon } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Card } from 'semantic-ui-react'
 // import { withRouter } from 'react-router';
 
 class Follower extends Component {

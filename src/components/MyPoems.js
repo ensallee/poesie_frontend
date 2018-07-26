@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 // import Poem from './Poem';
-import NavBar from './NavBar'
+import NavBar3 from './NavBar3'
 import ReactDOM from 'react-dom';
 // import { Carousel } from 'react-responsive-carousel';
 import { Carousel } from 'react-bootstrap';
@@ -94,7 +94,9 @@ class MyPoems extends Component {
     })
     return (
       <Fragment>
-        <NavBar />
+        <NavBar3 />
+        <br></br>
+        <br></br>
         {this.props.location.pathname.split('/')[2] === localStorage.id ? <Profile /> : <OtherUserProfile id={this.props.location.pathname.split('/')[2]} />}
           <div className="carousel-container">
           {this.state.poems.length !== 0 ? <Carousel>

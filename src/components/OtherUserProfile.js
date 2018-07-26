@@ -6,10 +6,7 @@ class OtherUserProfile extends Component {
     super(props)
 
     this.state = {
-      username: '',
-      displayName: '',
-      hometown: '',
-      bio: ''
+      user: ''
     }
   }
 
@@ -26,10 +23,7 @@ class OtherUserProfile extends Component {
     .then(resp => resp.json())
     .then(data => {
       this.setState({
-        username: data.username,
-        displayName: data.display_name,
-        hometown: data.hometown,
-        bio: data.bio
+        user: data
       }, () => console.log('state on otheruserprofile after settting state', this.state))
     })
   }
@@ -39,9 +33,9 @@ class OtherUserProfile extends Component {
       <Fragment>
         <div className="user-details">
           <p>
-          <h1>Name: {this.state.displayName}</h1>
-          <h4>Location: {this.state.hometown}</h4>
-          <h4>Bio: {this.state.bio}</h4>
+          <h1>Name: {this.state.user.display_name}</h1>
+          <h4>Location: {this.state.user.hometown}</h4>
+          <h4>Bio: {this.state.user.bio}</h4>
           </p>
         </div>
       </Fragment>

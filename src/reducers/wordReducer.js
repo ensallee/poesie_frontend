@@ -1,4 +1,4 @@
-import Adapter from '../components/Adapter'
+// import Adapter from '../components/Adapter'
 // import { GET_WORDS } from './actions'
 import { UPDATE_NOUNS, UPDATE_VERBS, UPDATE_ADJECTIVES, UPDATE_PREPOSITIONS, UPDATE_ADVERBS, UPDATE_OTHERS } from '../actions'
 

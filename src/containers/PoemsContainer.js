@@ -13,6 +13,10 @@ class PoemsContainer extends Component {
   }
 
   componentDidMount() {
+    this.getPoems()
+  }
+
+  getPoems() {
     let config = {
       method: "GET",
       headers: {"Content-Type": "application/json",
@@ -32,11 +36,31 @@ class PoemsContainer extends Component {
     this.props.history.push(`/users/${userId}/poems`)
   }
 
+  handleLike(id, likesCount) {
+    console.log('inside handleLike')
+    console.log('id inside handleLike', id)
+    let body = {
+      poem_id: id
+    }
+    let config = {
+      method: "POST",
+      headers: {"Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')},
+      body: JSON.stringify(body)
+    }
+
+    fetch('http://localhost:4000/likes', config)
+    .then(resp => resp.json())
+    .then(() => this.getPoems())
+  }
+
+
   render() {
+    //CAREFUL WITH THE LIKE BUTTON HERE! WHEN YOU CLICK ON IT, IT COUNTS AS A CLICK ON CAROUSEL ITEM! ALSO, THERE IS NO HANDLE LIKE FUNCTION SO IT BREAKS!
     let poemImages = this.state.poems.map(poem => {
       return (
-        <Carousel.Item onClick={() => this.handleClick(poem.user.id)} key={uuid()}>
-          <img width={900} height={500} alt="900x500" src={poem.url} />
+        <Carousel.Item key={uuid()}>
+          <img onClick={() => this.handleClick(poem.user.id)} width={900} height={500} alt="900x500" src={poem.url} />
           {this.props.location.pathname.split('/')[2] === localStorage.id ? <button className="delete-button" onClick={() => this.handleDelete(poem.id)}>Delete</button> : null}
           {poem.likes_count === 1 ? <button className="like-button" onClick={() => this.handleLike(poem.id, poem.likes_count)}>{poem.likes_count} Like</button> : <button className="like-button" onClick={() => this.handleLike(poem.id, poem.likes_count)}>{poem.likes_count} Likes</button>}
         </Carousel.Item>

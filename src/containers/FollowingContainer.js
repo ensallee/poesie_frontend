@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import NavBar3 from '../components/NavBar3'
-import User from '../components/User'
+// import User from '../components/User'
 import { Card } from 'semantic-ui-react'
 import Following from '../components/Following'
 

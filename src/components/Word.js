@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable'
-import Adapter from './Adapter'
+// import Adapter from './Adapter'
 
 class Word extends Component {
 

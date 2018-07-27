@@ -36,11 +36,15 @@ class LogInForm2 extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        console.log('json after registering', json);
-        localStorage.setItem('token', json.token);
-        localStorage.setItem('id', json.id)
-        this.props.setUser(json);
-        this.props.history.push("/write");
+        if (json.id !== undefined) {
+          console.log('json after registering', json);
+          localStorage.setItem('token', json.token);
+          localStorage.setItem('id', json.id)
+          this.props.setUser(json);
+          this.props.history.push("/write");
+        } else {
+          alert("You must enter a unique username and password. Please try again.")
+        }
       })
   }
 

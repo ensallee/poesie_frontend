@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import WordList from '../components/WordList';
 // import WritingArea from '../components/WritingArea';
 // import { Grid } from 'semantic-ui-react';
-import NavBar from '../components/NavBar'
-import Adapter from '../components/Adapter'
+// import Adapter from '../components/Adapter'
 import NavBar3 from '../components/NavBar3'
 
 class WritingContainer extends Component {

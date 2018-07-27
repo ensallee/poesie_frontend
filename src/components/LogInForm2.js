@@ -32,11 +32,14 @@ class LogInForm2 extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        localStorage.setItem('token', json.token);
-        //I had to save id to local storage because of the refresh issue with current user that I have throughout this app. I use localStorage.id throughout, rather than the currentUser inside state.
-        localStorage.setItem('id', json.id);
+        if (json.id === undefined) {
+          alert("That username and password do not match. Please try again.")
+        } else {
+          localStorage.setItem('token', json.token);
+          localStorage.setItem('id', json.id);
           this.props.setUser(json);
           this.props.history.push("/write");
+          }
         })
   }
 

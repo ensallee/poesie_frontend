@@ -1,7 +1,7 @@
 //I had to use following and followers instead of users for following container and followers container b/c for some reason, the fetch for an individual user doesn't return who that particular user is following and followed by.
 
-import React, { Component, Fragment } from 'react';
-import { Card, Icon } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Card } from 'semantic-ui-react'
 
 class Following extends Component {
 

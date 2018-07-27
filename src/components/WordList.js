@@ -3,7 +3,7 @@ import Word from './Word'
 import Adapter from './Adapter'
 import { connect } from 'react-redux'
 // import getWords from '../actions'
-import { Button } from 'semantic-ui-react';
+// import { Button } from 'semantic-ui-react';
 import { updateNouns, updateVerbs, updateAdjectives, updatePrepositions, updateAdverbs, updateOthers } from '../actions'
 import uuid from 'uuid';
 import html2canvas from 'html2canvas';

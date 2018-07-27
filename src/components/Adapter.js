@@ -35,6 +35,7 @@ class Adapter {
     localStorage.removeItem('id');
   }
 
+//I'm not using this anymore.
   static getRandomColor() {
     let letters = '0123456789ABCDEF';
     let color = '#';

@@ -367,9 +367,15 @@
 
 .user-card:hover {
   border: 1px solid rgba(74, 104, 114, .5) !important;
+  cursor: pointer !important;
 }
 
 /* this is the arrow in the carousel */
 .glyphicon {
   color: rgba(74, 104, 114, .5)
+}
+
+.navbar-brand {
+  font-family:'Cedarville Cursive', cursive !important;
+  font-size: 25px;
 }

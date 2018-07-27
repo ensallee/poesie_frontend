@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import NavBar3 from './NavBar3'
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { Carousel } from 'react-bootstrap';
 import Profile from './Profile';
 import { connect } from 'react-redux';

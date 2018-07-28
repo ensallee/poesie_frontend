@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Form, FormGroup, FormControl, Col, ControlLabel, Button } from "react-bootstrap";
+import { Form, FormGroup, FormControl, Col, ControlLabel, Button, HelpBlock } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { setUser } from '../actions';
 
@@ -14,7 +14,8 @@ class LogInForm2 extends Component {
       password: "",
       display_name: "",
       hometown: "",
-      bio: ""
+      bio: "",
+      selectedFile: null
     };
   }
 
@@ -48,6 +49,39 @@ class LogInForm2 extends Component {
       })
   }
 
+  handleFileSelect = (event) => {
+    console.log('event inside handleupload', event.target.files[0])
+    this.setState({
+      selectedFile: event.target.files[0]
+    })
+  }
+
+  handleFileUpload = () => {
+    console.log('inside handle file upload')
+    var url = this.getBase64(this.state.selectedFile)
+    console.log('url inside handleFileUpload', url)
+    // image.src = getBase64Image(this.state.selectedFile)
+    // document.body.appendChild(image)
+  }
+
+  getBase64 = (photo) => {
+     let reader = new FileReader()
+     let result
+      reader.readAsDataURL(photo)
+      reader.onloadend = () => {
+        // result = reader.result.replace(/^data:image\/(png|jpeg|jpg);base64,/, '')
+        result = reader.result
+        this.setState({
+          selectedFile: result
+        }, () => {console.log('after setting state', this.state.selectedFile);
+          let image = new Image()
+          image.src = this.state.selectedFile
+          image.style={width: "500px", height: "800px"}
+          document.body.appendChild(image)
+      })
+      }
+  }
+
   render() {
     return (
       <Fragment>
@@ -72,7 +106,7 @@ class LogInForm2 extends Component {
               </Col>
             </FormGroup>
 
-            <FormGroup controlId="formHorizontalUsername">
+            <FormGroup controlId="formHorizontalDisplayName">
               <Col componentClass={ControlLabel} sm={2}>
                 Display Name
               </Col>
@@ -81,7 +115,7 @@ class LogInForm2 extends Component {
               </Col>
             </FormGroup>
 
-            <FormGroup controlId="formHorizontalUsername">
+            <FormGroup controlId="formHorizontalHometown">
               <Col componentClass={ControlLabel} sm={2}>
                 Hometown
               </Col>
@@ -90,7 +124,7 @@ class LogInForm2 extends Component {
               </Col>
             </FormGroup>
 
-            <FormGroup controlId="formHorizontalUsername">
+            <FormGroup controlId="formHorizontalBio">
               <Col componentClass={ControlLabel} sm={2}>
                 Bio
               </Col>
@@ -98,6 +132,14 @@ class LogInForm2 extends Component {
                 <FormControl name="bio" value={this.state.bio} onChange={this.handleChange} type="bio" placeholder="Bio" />
               </Col>
             </FormGroup>
+
+            <FieldGroup
+              id="formControlsFile"
+              type="file"
+              label="Upload a Profile Photo"
+              onChange={this.handleFileSelect}>
+            </FieldGroup>
+            <Button type="button" onClick={this.handleFileUpload}>Upload</Button>
 
             <FormGroup>
               <Col smOffset={1} sm={10}>
@@ -110,6 +152,51 @@ class LogInForm2 extends Component {
     )
   }
 }
+
+function FieldGroup({ id, label, help, ...props }) {
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} />
+    </FormGroup>
+  );
+}
+//
+// function getBase64(photo) {
+//    let reader = new FileReader()
+//    let result
+//     reader.readAsDataURL(photo)
+//     reader.onloadend = () => {
+//       result = reader.result.replace(/^data:image\/(png|jpeg|jpg);base64,/, '')
+//       this.setState({
+//         selectedFile: result
+//       }, () => console.log('after setting state', this.state.selectedFile))
+//     }
+// }
+
+// var reader = new FileReader();
+// let result;
+// reader.readAsDataURL(file);
+// reader.onload = function () {
+//   console.log('result of getBase64', reader.result);
+//   result = reader.result
+// };
+// reader.onerror = function (error) {
+//   console.log('Error: ', error);
+// };
+
+
+// function getBase64Image(img) {
+//   var canvas = document.createElement("canvas");
+//   canvas.width = img.width;
+//   canvas.height = img.height;
+//   var ctx = canvas.getContext("2d");
+//   ctx.drawImage(img, 0, 0);
+//   var dataURL = canvas.toDataURL("image/png");
+//   return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+// }
+
+// <input type="file" />
 
 const mapDispatchToProps = (dispatch) => {
   return {

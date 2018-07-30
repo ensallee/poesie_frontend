@@ -72,10 +72,10 @@ class UsersContainer extends Component {
 
   render() {
     let userComponents = this.props.users.map(u => {
-        return <User user = {u} history = {this.props.history} unFollow={this.unFollow} handleFollow={this.handleFollow} followers={u.followers} following={u.following} key={u.id} id={u.id} name={u.display_name} bio={u.bio} hometown={u.hometown} />
+        return <User user = {u} history = {this.props.history} images={u.images} unFollow={this.unFollow} handleFollow={this.handleFollow} followers={u.followers} following={u.following} key={u.id} id={u.id} name={u.display_name} bio={u.bio} hometown={u.hometown} />
       })
     let filteredUsers = this.state.filteredUsers.map(u => {
-        return <User user = {u} history = {this.props.history} unFollow={this.unFollow} handleFollow={this.handleFollow} followers={u.followers} following={u.following} key={u.id} id={u.id} name={u.display_name} bio={u.bio} hometown={u.hometown} />
+        return <User user = {u} history = {this.props.history} images={u.images} unFollow={this.unFollow} handleFollow={this.handleFollow} followers={u.followers} following={u.following} key={u.id} id={u.id} name={u.display_name} bio={u.bio} hometown={u.hometown} />
       })
     return (
       <Fragment>

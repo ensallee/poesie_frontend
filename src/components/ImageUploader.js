@@ -7,6 +7,8 @@ class ImageUploader extends Component {
 
     this.state = {
       image: '',
+      filename: '',
+      user_id: ''
     };
 
     this.handleUploadImage = this.handleUploadImage.bind(this);
@@ -17,21 +19,28 @@ class ImageUploader extends Component {
     let id = this.props.location.pathname.split('/')[2]
 
     const data = new FormData();
-    console.log('uploadInput file', this.uploadInput.files[0])
-    data.append('image', this.uploadInput.files[0]);
-    data.append('filename', this.uploadInput.files[0].name)
-    data.append('user_id', localStorage.id)
+    // console.log('uploadInput file', this.uploadInput.files[0])
+    data.append('image', this.state.image);
+    data.append('filename', this.state.filename)
+    data.append('user_id', this.state.user_id)
 
     fetch('http://localhost:4000/images', {
       method: 'POST',
       body: data,
     })
     .then(resp => resp.json())
-    .then(this.props.history.push(`/users/${id}/poems`))
+    .then(json => {
+      this.props.history.push(`/users/${id}/poems`)
+    })
   };
 
   seeImage = (e) => {
-    console.log('e.target.value', e.target.value)
+    console.log('e.target.files.name', e.target.files[0].name)
+    this.setState({
+      image: e.target.files[0],
+      filename: e.target.files[0].name,
+      user_id: localStorage.id
+    }, () => console.log(this.state))
     // this.setState({
     //   image: this.uploadInput.files[0]
     // }, () => console.log('image after setting state',this.state.image))

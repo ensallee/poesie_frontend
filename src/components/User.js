@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Icon } from 'semantic-ui-react'
+import { Card, Icon, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 class User extends Component {
@@ -22,6 +22,7 @@ class User extends Component {
     return (
       <Card className="user-card font">
         <Card.Content onClick={this.handleClick}>
+          {this.props.images.length !== 0 ? <img className="card-photo" src={`${this.props.images[this.props.images.length -1].image.url}`}/> : <img className="card-photo" src={require("../images/placeholder_avatar.png")}/>}
           <Card.Header style={{fontFamily: "Open Sans, sans-serif"}}>{this.props.name}</Card.Header>
           <Card.Meta>
             <span className='date font'>{this.props.hometown}</span>

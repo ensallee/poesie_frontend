@@ -44,6 +44,10 @@ class Profile extends Component {
     })
   }
 
+  editProfile = () => {
+    this.props.history.push(`/users/${this.state.id}/edit`)
+  }
+
   render() {
     return (
       <Fragment>
@@ -55,6 +59,7 @@ class Profile extends Component {
           <br></br>
           <br></br>
           <p><NavLink exact to={`/users/${this.state.id}/following`}> {this.state.following.length} Following </NavLink> | <NavLink exact to={`/users/${this.state.id}/followers`}> {this.state.followers.length} Followers</NavLink></p>
+          {localStorage.id == this.state.id ? <button className="edit-button" onClick={this.editProfile}>Edit Profile</button> : null}
           </p>
         </div>
       </Fragment>

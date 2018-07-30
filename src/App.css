@@ -241,6 +241,22 @@
   border-radius: 5px;
 }
 
+.edit-button {
+  color: black;
+  margin-top: 8px;
+  margin-left: 2px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.edit-button:hover {
+  color: black;
+  margin-top: 8px;
+  margin-left: 2px;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+}
+
 .user-details {
   float: left;
   height: 500px;

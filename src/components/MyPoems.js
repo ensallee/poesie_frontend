@@ -93,7 +93,7 @@ class MyPoems extends Component {
         <NavBar3 />
         <br></br>
         <br></br>
-        {this.props.location.pathname.split('/')[2] === localStorage.id ? <Profile /> : <OtherUserProfile id={this.props.location.pathname.split('/')[2]} />}
+        {this.props.location.pathname.split('/')[2] === localStorage.id ? <Profile history={this.props.history} /> : <OtherUserProfile id={this.props.location.pathname.split('/')[2]} />}
           <div className="carousel-container">
           {this.state.poems.length !== 0 ? <Carousel>
             {poemComponents.reverse()}

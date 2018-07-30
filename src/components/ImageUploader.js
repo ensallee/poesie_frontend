@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Form, FormGroup, FormControl, Col, ControlLabel, Button } from "react-bootstrap";
 
 class ImageUploader extends Component {
   constructor(props) {
@@ -29,28 +30,56 @@ class ImageUploader extends Component {
     .then(this.props.history.push(`/users/${id}/poems`))
   };
 
-  seeImage = () => {
-    console.log('inside see image')
-    this.setState({
-      image: this.uploadInput.files[0]
-    }, () => console.log('image after setting state',this.state.image))
+  seeImage = (e) => {
+    console.log('e.target.value', e.target.value)
+    // this.setState({
+    //   image: this.uploadInput.files[0]
+    // }, () => console.log('image after setting state',this.state.image))
   }
 
   render() {
     return (
-      <div className="image-uploader-container">
-        <form onSubmit={this.handleUploadImage}>
-          <div>
-            <input onChange={this.seeImage} ref={(ref) => { this.uploadInput = ref; }} type="file" />
-          </div>
-          <br />
-          <div>
-            {this.state.image !== '' ? <button>Upload</button> : null }
-          </div>
-        </form>
-    </div>
+      <div className="form">
+        <h3>Upload Photo</h3>
+        <Form onSubmit={this.handleUploadImage} horizontal>
+          <FieldGroup
+            id="formControlsFile"
+            type="file"
+            label="Upload a Profile Photo"
+            onChange={this.seeImage}
+            ref={(ref) => { this.uploadInput = ref; }}>
+          </FieldGroup>
+          {this.state.image !== '' ? <Fragment><Button type="button" onClick={this.handleUploadImage}>Upload</Button></Fragment> : null}
+        </Form>
+      </div>
     );
   }
 }
 
+  function FieldGroup({ id, label, ...props }) {
+    return (
+      <FormGroup controlId={id}>
+        <ControlLabel>{label}</ControlLabel>
+        <FormControl {...props} />
+      </FormGroup>
+    );
+  }
+
+
 export default ImageUploader;
+
+
+//the old return statement inside render
+// return (
+//   <div className="image-uploader-container">
+//     <form onSubmit={this.handleUploadImage}>
+//       <div>
+//         <input onChange={this.seeImage} ref={(ref) => { this.uploadInput = ref; }} type="file" />
+//       </div>
+//       <br />
+//       <div>
+//         {this.state.image !== '' ? <button>Upload</button> : null }
+//       </div>
+//     </form>
+// </div>
+// );

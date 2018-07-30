@@ -60,12 +60,17 @@ class OtherUserProfile extends Component {
 
   render() {
     let user = this.props.users.find(u => u.id == this.props.id)
-    console.log('user', user)
+    // let image = user.images[user.images.length - 1]
+    // let imageUrl;
+    // if (image !== undefined) {
+    //   imageUrl = image.image.url
+    // }
     return (
       <Fragment>
         <div className="user-details">
           {user !== undefined ?
           <p>
+          {user.images.length !== 0 ? <img className="profile-image" src={`${user.images[user.images.length -1].image.url}`} /> : <img className="profile-image" src={require("../images/placeholder_avatar.png")}/>}
           <h1>{user.display_name}</h1>
           <h4>{user.hometown}</h4>
           <h4>{user.bio} </h4>

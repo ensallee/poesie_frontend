@@ -14,6 +14,7 @@ import FollowersContainer from './containers/FollowersContainer';
 import FollowingContainer from './containers/FollowingContainer';
 import PoemsContainer from './containers/PoemsContainer'
 import EditProfileForm from './components/EditProfileForm';
+import ImageUploader from './components/ImageUploader'
 
 class App extends Component {
 
@@ -70,6 +71,7 @@ class App extends Component {
               <Route exact path="/users" component={(props) => <UsersContainer {...props} />} />
               <Route exact path="/poems" component={(props) => <PoemsContainer {...props} />} />
               <Route exact path="/users/:id/edit" component={(props) => <EditProfileForm {...props} />} />
+              <Route exact path="/users/:id/photo" component={(props) => <ImageUploader {...props} />} />
             </Fragment>
             :
             <Fragment>

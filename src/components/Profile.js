@@ -7,6 +7,7 @@ class Profile extends Component {
     super(props)
 
     this.state = {
+      images: [],
       id: '',
       username: '',
       displayName: '',
@@ -33,6 +34,7 @@ class Profile extends Component {
       // debugger
       // console.log('data after fetch inside profile', data);
       this.setState({
+        images: data.images,
         id: data.id,
         username: data.username,
         displayName: data.display_name,
@@ -40,7 +42,7 @@ class Profile extends Component {
         bio: data.bio,
         following: data.following,
         followers: data.followers
-      })
+      }, () => console.log('images after setting state', this.state.images))
     })
   }
 
@@ -48,11 +50,23 @@ class Profile extends Component {
     this.props.history.push(`/users/${this.state.id}/edit`)
   }
 
+  uploadPhoto = () => {
+    this.props.history.push(`/users/${this.state.id}/photo`)
+  }
+
   render() {
+    var image = this.state.images[this.state.images.length - 1]
+    var image_url;
+    console.log('image url', image_url)
+    if (image !== undefined) {
+      image_url = image.image.url
+    }
+    console.log('image', image)
     return (
       <Fragment>
         <div className="user-details">
           <p>
+          {image_url === undefined ? <img className="profile-image" src={require("../images/placeholder_avatar.png")}/> : <img className="profile-image" src={`${image_url}`} />}
           <h1>{this.state.displayName}</h1>
           <h4>{this.state.hometown}</h4>
           <h4>{this.state.bio}</h4>
@@ -60,6 +74,7 @@ class Profile extends Component {
           <br></br>
           <p><NavLink exact to={`/users/${this.state.id}/following`}> {this.state.following.length} Following </NavLink> | <NavLink exact to={`/users/${this.state.id}/followers`}> {this.state.followers.length} Followers</NavLink></p>
           {localStorage.id == this.state.id ? <button className="edit-button" onClick={this.editProfile}>Edit Profile</button> : null}
+          {localStorage.id == this.state.id ? <button className="upload-photo" onClick={this.uploadPhoto}>Upload Photo</button> : null}
           </p>
         </div>
       </Fragment>

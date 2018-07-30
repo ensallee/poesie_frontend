@@ -74,7 +74,7 @@ class Profile extends Component {
           <br></br>
           <p><NavLink exact to={`/users/${this.state.id}/following`}> {this.state.following.length} Following </NavLink> | <NavLink exact to={`/users/${this.state.id}/followers`}> {this.state.followers.length} Followers</NavLink></p>
           {localStorage.id == this.state.id ? <button className="edit-button" onClick={this.editProfile}>Edit Profile</button> : null}
-          {localStorage.id == this.state.id ? <button className="upload-photo" onClick={this.uploadPhoto}>Upload Photo</button> : null}
+          {localStorage.id == this.state.id ? <button className="upload-button" onClick={this.uploadPhoto}>Upload Photo</button> : null}
           </p>
         </div>
       </Fragment>

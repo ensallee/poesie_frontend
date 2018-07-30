@@ -60,11 +60,6 @@ class OtherUserProfile extends Component {
 
   render() {
     let user = this.props.users.find(u => u.id == this.props.id)
-    // let image = user.images[user.images.length - 1]
-    // let imageUrl;
-    // if (image !== undefined) {
-    //   imageUrl = image.image.url
-    // }
     return (
       <Fragment>
         <div className="user-details">

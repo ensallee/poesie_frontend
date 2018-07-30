@@ -95,7 +95,7 @@ class WordList extends Component {
           <button className="main-button" onClick={this.handleClick}>Refresh Words</button>
           { Adapter.isLoggedIn() ? <button className="main-button" onClick={this.savePoem}>Save Poem</button> : null }
         <div ref="area" id="word-list">
-          {wordComponents}
+          {(this.props.nouns.length === 0 || this.props.verbs.length === 0 || this.props.adjectives.length === 0 || this.props.prepositions.length === 0 || this.props.adverbs.length === 0) ? <Fragment><h6>Loading...</h6></Fragment> : <Fragment>{wordComponents}</Fragment>}
         </div>
         </Fragment>
     )

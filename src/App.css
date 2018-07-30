@@ -379,3 +379,42 @@
   font-family:'Cedarville Cursive', cursive !important;
   font-size: 25px;
 }
+
+
+
+/* .title:hover {
+background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+color:transparent;
+-webkit-background-clip: text;
+background-clip: text;
+} */
+
+/* .linear-wipe {
+  text-align: center;
+
+  background: linear-gradient(to right, #C0392B 20%, #F5F25F 40%, #FF0 60%, #FFF 80%); */
+  /* background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  background-size: 200% auto;
+
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shine 1s linear infinite;
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
+} */
+
+/* This looks sort of good
+  background: linear-gradient(to right, #C0392B 20%, #FF0 40%, #FF0 60%, #FFF 80%); */
+  /* background: linear-gradient(to right, #C0392B 20%, #F5F25F 40%, #FF0 60%, #FFF 80%); */
+    /* background: linear-gradient(#105CD9 20%, #7A6D92); */

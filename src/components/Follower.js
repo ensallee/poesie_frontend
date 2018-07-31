@@ -1,31 +1,65 @@
-//I had to use following and followers instead of users for following container and followers container b/c for some reason, the fetch for an individual user doesn't return who that particular user is following and followed by.
-
+//I had to use following and followers instead of users for following container and followers container b/c for some reason, the fetch for an individual user doesn't return who that particular user is following and followed by. It also doesn't reflect their images. So, once I get to the individual following and follower components, I do a fetch for that parcticular user so I can retrieve that information.
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react'
 
 class Follower extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      followers: [],
+      following: [],
+      images: []
+    }
+  }
 
   handleClick = () =>  {
     this.props.history.push(`/users/${this.props.id}/poems`)
   }
 
+  componentDidMount = () => {
+    let config = {
+      method: "GET",
+      headers: {"Content-Type": "application/json",
+          "Authorization": localStorage.getItem('token')
+        }
+    }
+
+    fetch(`http://localhost:4000/users/${this.props.id}`, config)
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        followers: data.followers,
+        following: data.following,
+        images: data.images
+      })
+    })
+  }
+
 //again, I had to user localStorage.id here instead of using the current user in the store
   render() {
+    let image = this.state.images[this.state.images.length - 1]
+    let image_url;
+    if (image !== undefined) {
+      image_url = image.image.url
+    }
     return (
       <Card className="user-card font">
         <Card.Content className="font" onClick={this.handleClick}>
+          {image_url === undefined ? <img className="card-photo" src={require("../images/placeholder_avatar.png")}/> : <img className="card-photo" src={`${image_url}`} />}
           <Card.Header className="font">{this.props.name}</Card.Header>
           <Card.Meta>
             <span className='font date'>{this.props.hometown}</span>
           </Card.Meta>
           <Card.Description className="font">{this.props.bio}</Card.Description>
         </Card.Content>
+        <Card.Content className="font" extra>
+            <Icon name='user' />
+            {this.state.followers.length} Followers | {this.state.following.length} Following
+        </Card.Content>
       </Card>
     )
   }
 }
-
-//this is what I would use for images if I enabled users to upload photos on register.
-// <Image src='/images/avatar/large/matthew.png' />
 
 export default Follower;

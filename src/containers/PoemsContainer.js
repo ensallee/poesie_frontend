@@ -56,11 +56,10 @@ class PoemsContainer extends Component {
 
 
   render() {
-    //CAREFUL WITH THE LIKE BUTTON HERE! WHEN YOU CLICK ON IT, IT COUNTS AS A CLICK ON CAROUSEL ITEM! ALSO, THERE IS NO HANDLE LIKE FUNCTION SO IT BREAKS!
     let poemImages = this.state.poems.map(poem => {
       return (
         <Carousel.Item key={uuid()}>
-          <img onClick={() => this.handleClick(poem.user.id)} width={900} height={500} alt="900x500" src={poem.url} />
+          <img className="poem-in-explore" onClick={() => this.handleClick(poem.user.id)} width={900} height={500} alt="900x500" src={poem.url} />
           {this.props.location.pathname.split('/')[2] === localStorage.id ? <button className="delete-button" onClick={() => this.handleDelete(poem.id)}>Delete</button> : null}
           {poem.likes_count === 1 ? <button className="like-button" onClick={() => this.handleLike(poem.id, poem.likes_count)}>{poem.likes_count} Like</button> : <button className="like-button" onClick={() => this.handleLike(poem.id, poem.likes_count)}>{poem.likes_count} Likes</button>}
         </Carousel.Item>

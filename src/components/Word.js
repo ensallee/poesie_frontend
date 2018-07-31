@@ -20,10 +20,10 @@ class Word extends Component {
     // word.style.borderColor="black"
   }
 
-  handleDoubleClick(e) {
-    let el = e.target
-    el.classList.add('hidden')
-  }
+  // handleDoubleClick(e) {
+  //   let el = e.target
+  //   el.classList.add('hidden')
+  // }
 
   render() {
     return (
@@ -31,7 +31,7 @@ class Word extends Component {
         onStart={this.onStart}
         onDrag={this.handleDrag}
         onStop={this.onStop}>
-        <div className="handle word" onDoubleClick={this.handleDoubleClick}>{this.props.word}</div>
+        <div className="handle word">{this.props.word}</div>
       </Draggable>
     );
   }

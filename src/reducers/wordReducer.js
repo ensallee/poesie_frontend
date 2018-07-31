@@ -11,7 +11,7 @@ let initialState = {
   others: []
 }
 
-let others = ["a", "the", "an", "and", "or", "but", "he", "she", "they", "it", "we", "his", "hers", "our", "are", "is", "were", "s", "es"]
+let others = ["a", "the", "an", "and", "or", "but", "he", "she", "they", "it", "we", "his", "her", "our", "are", "is", "were", "s", "es"]
 
 export default function reducer(state=initialState, action) {
   switch(action.type) {

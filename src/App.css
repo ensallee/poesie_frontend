@@ -17,7 +17,7 @@
     text-align: center;
 
     /* Background styles */
-    background-image: url(./images/bogomil-mihaylov-519194-unsplash.png);
+    background-image: url(./images/keyboard-screenshot.png);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -360,6 +360,7 @@
   margin: 3px;
 }
 
+/* this is for the semantic cards showing individual users */
 .user-card{
   border: 1px solid white !important;
 }
@@ -394,4 +395,15 @@
   width: 200px;
   object-fit: cover;
   margin-bottom: 15px;
+}
+
+/* this is the poem in carousel under the explore tab */
+.poem-in-explore {
+  border: 1px solid white !important;
+  cursor: pointer !important;
+}
+
+.poem-in-explore:hover {
+  border: 1px solid rgba(74, 104, 114, .5) !important;
+  cursor: pointer !important;
 }

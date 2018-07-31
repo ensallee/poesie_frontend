@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import NavBar3 from '../components/NavBar3'
-// import User from '../components/User'
 import { Card } from 'semantic-ui-react'
 import Following from '../components/Following'
+
+//I had to use following and followers instead of users for following container and followers container b/c for some reason, the fetch for an individual user doesn't return who that particular user is following and followed by. It also doesn't reflect their images. So, once I get to the individual following and follower components, I do a fetch for that parcticular user so I can retrieve that information.
 
 class FollowingContainer extends Component {
 
@@ -28,11 +29,11 @@ class FollowingContainer extends Component {
     fetch(`http://localhost:4000/users/${id}`, config)
     .then(resp => resp.json())
     .then(data => {
-      console.log('data after fetch', data)
+      // console.log('data after fetch inside following container', data)
       this.setState({
         following: data.following,
         displayName: data.display_name
-      }, () => console.log('state inside followers container', this.state))
+      })
     })
   }
 
@@ -44,9 +45,11 @@ class FollowingContainer extends Component {
       <Fragment>
         <NavBar3 />
         <div className="users-container">
-          <h3>{this.state.displayName}'s Followed</h3>
+          <h3>{this.state.displayName} is Following:</h3>
+          <br></br>
+          <br></br>
           <Card.Group centered itemsPerRow={4}>
-            {followingComponents.length !==0 ? <Fragment>{followingComponents}</Fragment> : <Fragment><br></br><br></br><h4>{this.state.displayName} doesn't follow anyone yet.</h4></Fragment>}{followingComponents}
+            {followingComponents.length !==0 ? <Fragment>{followingComponents}</Fragment> : <Fragment><br></br><br></br><h4>{this.state.displayName} doesn't follow anyone yet.</h4></Fragment>}
           </Card.Group>
         </div>
       </Fragment>

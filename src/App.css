@@ -1,0 +1,409 @@
+.App {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/*for first page */
+.hero {
+    /* Sizing */
+    width: 100vw;
+    height: 100vh;
+    /* Flexbox stuff */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Text styles */
+    text-align: center;
+
+    /* Background styles */
+    background-image: url(./images/keyboard-screenshot.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/*for first page */
+.hero-inner {
+  width: 40%;
+  /* background: white; */
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+}
+
+/*for first page */
+.hero h1 {
+    /* Text styles */
+    font-size: 6em;
+    font-family:'Cedarville Cursive', cursive;
+    /* Margins */
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+/*for first page */
+/*this isn't being used*/
+  .hero .btn {
+    /* Positioning and sizing */
+    display: block;
+    width: 200px;
+
+    /* Padding and margins */
+    padding: 1em;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Text styles */
+    color: black;
+    text-decoration: none;
+    font-size: 1.5em;
+
+
+    /* Border styles */
+    border: 3px solid black;
+    border-radius: 20px;
+}
+
+/*for first page */
+/*this isn't being used*/
+  .hero .btn:hover {
+    /* Positioning and sizing */
+    display: block;
+    width: 200px;
+
+    /* Padding and margins */
+    padding: 1em;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Text styles */
+    color: rgb(160, 7, 72);
+    text-decoration: none;
+    font-size: 1.5em;
+
+
+    /* Border styles */
+    border: 3px solid rgb(160, 7, 72);
+    border-radius: 20px;
+}
+
+.hero-button {
+  display: block;
+  width: 150px;
+
+  /* Padding and margins */
+  padding: .5em;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* Text styles */
+  color: black;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-family: 'Nixie One', cursive;
+  letter-spacing: .10rem;
+
+  /*Background Color */
+  background: rgba(255, 255, 255, 0.4);
+
+
+  /* Border styles */
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.hero-button:hover {
+  display: block;
+  width: 150px;
+
+  /* Padding and margins */
+  padding: .5em;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* Text styles */
+  color: rgb(74, 104, 114);
+  text-decoration: none;
+  font-size: 1.5em;
+  font-family: 'Nixie One', cursive;
+  letter-spacing: .10rem;
+
+
+  /* Border styles */
+  border: 1px solid rgb(74, 104, 114);
+  border-radius: 20px;
+}
+
+/*
+  The auto gives you fixed size and scrolling when it gets too big
+  If you want it to be flexible and expand, use min-height?
+
+  The not dragging is because of how deeply nested in the HTML the words are.
+  They are behind other elements now so you can't actually click them ouside of the div.
+*/
+#word-list {
+  border: 2px solid black;
+  /* min-width: 70%; */
+  min-height: 600px;
+  /* float: right; */
+  /* overflow: auto; */
+  margin: 0 auto;
+  flex: 1;
+  width: 900px;
+  height: 600px;
+}
+
+/* I didn't end up using writing area */
+#writing-area {
+  border: 2px solid black;
+  min-height: 600px;
+  /* width: 70%;
+  height: 600px; */
+  float: left;
+  margin: 0 auto;
+  /* flex: 1; */
+}
+
+.word {
+  border: 1px solid black;
+  padding: 2px;
+  display: inline-block;
+  margin: 1px;
+  font-family: serif;
+  font-size: 16px;
+  /* font-family: 'Nixie One', cursive;
+  font-weight: bold;
+  letter-spacing: .10rem; */
+}
+
+.writing-container {
+  /* display: flex; */
+}
+
+.hidden {
+  /* visibility: hidden; */
+  display: none;
+}
+
+/* what is this? */
+.main-buttons {
+  margin: 5px;
+  color: blue;
+}
+
+.carousel-container {
+  margin: 0 auto;
+  width: 750px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.carousel-control {
+  background: none !important;
+}
+
+.delete-button {
+  color: black;
+  margin-top: 8px;
+  margin-right: 2px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  color: black;
+  margin-top: 8px;
+  margin-right: 2px;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+}
+
+.like-button {
+  color: black;
+  margin-top: 8px;
+  margin-left: 2px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.like-button:hover {
+  color: black;
+  margin-top: 8px;
+  margin-left: 2px;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+}
+
+.edit-button {
+  color: black;
+  margin-top: 8px;
+  margin-left: 2px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.edit-button:hover {
+  color: black;
+  margin-top: 8px;
+  margin-left: 2px;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+}
+
+.upload-button {
+  color: black;
+  margin-top: 8px;
+  margin-left: 2px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.upload-button:hover {
+  color: black;
+  margin-top: 8px;
+  margin-left: 2px;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+}
+
+.user-details {
+  float: left;
+  height: 500px;
+  padding-left: 75px;
+  background-color: #FFFFFF;
+}
+
+/*an attempt to center content inside profile component vertically*/
+.user-details p {
+  max-width: 400px;
+  min-width: 400px;
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+}
+
+.title {
+  font-family:'Cedarville Cursive', cursive;
+  font-size: 80px;
+}
+
+.main-button {
+  margin: 5px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.main-button:hover {
+  margin: 5px;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.follow-button {
+  display: block;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.unfollow-button {
+  display: block;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.follow-button:hover {
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.unfollow-button:hover {
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(74, 104, 114, .5);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.logout-button {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(25%);
+}
+
+.font {
+  font-family: "Open Sans", sans-serif !important;
+}
+
+.form {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 600px;
+}
+
+.users-container{
+  margin: 3px;
+}
+
+/* this is for the semantic cards showing individual users */
+.user-card{
+  border: 1px solid white !important;
+}
+
+.user-card:hover {
+  border: 1px solid rgba(74, 104, 114, .5) !important;
+  cursor: pointer !important;
+}
+
+/* this is the arrow in the carousel */
+.glyphicon {
+  color: rgba(74, 104, 114, .5)
+}
+
+.navbar-brand {
+  font-family:'Cedarville Cursive', cursive !important;
+  font-size: 25px;
+}
+
+.image-uploader-container {
+  margin: 0 auto;
+}
+
+.profile-image {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+}
+
+.card-photo{
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* this is the poem in carousel under the explore tab */
+.poem-in-explore {
+  border: 1px solid white !important;
+  cursor: pointer !important;
+}
+
+.poem-in-explore:hover {
+  border: 1px solid rgba(74, 104, 114, .5) !important;
+  cursor: pointer !important;
+}

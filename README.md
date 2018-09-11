@@ -6,7 +6,7 @@ If Magnetic Poetry and Instagram had a baby, it would be Poesie: a full stack po
 
 To use Poesie, first fork and clone the Rails backend repo, found [here](https://github.com/ensallee/poesie_backend). Next, run `bundle install` in the command line and launch Postgres. Once Postgres is running, create your own secret key in an .env file. Then, run `rails db:create && rails db:migrate`, followed by `rails db:seed`. Finally, run `rails s -p 4000`, which will launch the API on a local server at the specified port.
 
-Once you have the backend running, fork and clone the React+Redux frontend, which is in this repo. Before you proceed, request your own API key from [Wordnik]((https://developer.wordnik.com/) and adjust the routes accordingly to complete successful queries. Next, run `npm install` in the command line. Then, run `npm start`. As long as you seeded your database when setting up the backend, you can log in as 'guest' with the password 'password'.
+Once you have the backend running, fork and clone the React+Redux frontend, which is in this repo. Before you proceed, request your own API key from [Wordnik](https://developer.wordnik.com/) and adjust the routes accordingly to complete successful queries. Next, run `npm install` in the command line. Then, run `npm start`. As long as you seeded your database when setting up the backend, you can log in as 'guest' with the password 'password'.
 
 ## Built With
 - JavaScript
